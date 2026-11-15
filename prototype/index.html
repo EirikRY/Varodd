@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="nb">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bedriftsoversikt · Varodd</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#100d26;color:#faf6ff;font:15px/1.55 system-ui,sans-serif}
+header{padding:16px clamp(20px,6vw,74px);border-bottom:1px solid #453657;background:#17122f}
+header strong{font:bold 29px Georgia,serif;margin-right:8px}
+header span,p{color:#d3c7e5}
+main{min-height:calc(100vh - 70px);padding:clamp(25px,6vw,72px);background:radial-gradient(circle,#bb9ee22b 1px,transparent 1.5px) 0 0/22px 22px}
+.wrap{max-width:920px;margin:auto}
+h1{font-size:clamp(30px,5vw,46px);letter-spacing:-.045em;margin:0}
+p{margin:6px 0 0}
+.example{margin:24px 0 9px;color:#ffc8f7;font-size:13px}
+.list{border:1px solid #524465;border-radius:16px;background:#1c1636;padding:0 18px}
+article{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:17px 0}
+article+article{border-top:1px solid #453657}
+h2{font-size:17px;margin:0}
+article p{font-size:14px}
+a{display:inline-block;background:#f9c4ef;color:#28153d;border-radius:9px;padding:9px 13px;text-decoration:none;font-weight:650}
+a:hover{background:#ffe1f9}
+a:focus-visible{outline:2px solid white;outline-offset:4px}
+body{background:#f7f5fc;color:#21164b}
+header{background:#fff;border-color:#e6e0f3}
+header span,p{color:#534969}
+main{background-color:#f7f5fc;background-image:radial-gradient(circle,#b6a4d85c 1px,transparent 1.5px)}
+.example{color:#6a3366}
+.list{background:#fff;border-color:#dfd6ed;box-shadow:0 10px 28px #41266a0d}
+article+article{border-color:#eee8f6}
+a:focus-visible{outline-color:#352179}
+body{background:#f5effb}
+header{background:#ffffff85;backdrop-filter:blur(18px);border-color:#fff}
+main{background-color:#f6f1fc;background-image:radial-gradient(ellipse at 82% 18%,#efb8edbc,transparent 49%),radial-gradient(ellipse at 15% 65%,#c2c2f4bd,transparent 55%),radial-gradient(circle,#77579b38 1px,transparent 1.5px);background-size:auto,auto,22px 22px}
+.list{background:#ffffff85;border-color:#fff;backdrop-filter:blur(20px);box-shadow:0 12px 36px #4a2d7824,inset 0 1px 0 #fff}
+article+article{border-color:#77609230}
+a{background:#f4c4ee;border:1px solid #fff9}
+.add{position:relative;margin-top:18px}
+.add summary,.add button{display:inline-block;background:#f4c4ee;color:#28153d;border:1px solid #fff9;border-radius:9px;padding:9px 13px;font:inherit;font-weight:650;cursor:pointer}
+.add summary{list-style:none}
+.add summary::-webkit-details-marker{display:none}
+.add form{max-width:580px;margin-top:10px;padding:16px;background:#ffffff85;border:1px solid #fff;border-radius:14px;backdrop-filter:blur(20px);box-shadow:0 12px 36px #4a2d7824}
+.add label{display:block;font-weight:650}
+.add .fields{display:flex;flex-wrap:wrap;gap:8px;margin-top:7px}
+.add input{flex:1 1 240px;min-width:0;padding:9px 11px;border:1px solid #a994bd;border-radius:8px;background:#ffffffb5;color:#21164b;font:inherit}
+.add p{font-size:13px;margin-top:9px}
+main{
+  background-image:radial-gradient(circle,#5d3e8840 1px,transparent 1.6px),radial-gradient(ellipse at 80% 16%,#e89cddaa,transparent 48%),radial-gradient(ellipse at 18% 62%,#aba7eebb,transparent 54%),linear-gradient(145deg,#f8f5ff,#e9e0f6);
+  background-size:22px 22px,auto,auto,auto
+}
+.list,.add form{
+  background:linear-gradient(145deg,#ffffffcf,#ffffff59 55%,#eee6f8a6);
+  backdrop-filter:blur(14px) saturate(145%);
+  box-shadow:inset 0 2px 1px #fff,inset 0 -2px 2px #79579b33,0 3px 6px #49336e24,0 17px 36px -8px #4b347a65,0 34px 62px -25px #53348068;
+}
+a,.add summary,.add button{background:linear-gradient(155deg,#ffe9fa,#efb5e4);box-shadow:inset 0 1px 1px #fff,0 3px 7px #69457727}
+body{background:#d9e4f7;color:#233866}
+header{border-color:#dce5f7}
+main{
+  background-image:radial-gradient(circle,#29477c50 1px,transparent 1.6px),radial-gradient(ellipse at 79% 25%,#c4d3efd9,transparent 49%),radial-gradient(ellipse at 18% 66%,#829cc9df,transparent 56%),linear-gradient(145deg,#d9e4f7,#9eafd1);
+  background-size:22px 22px,auto,auto,auto;
+}
+.list,.add form{background:linear-gradient(145deg,#fff,#f3f6fd);box-shadow:inset 0 1px 1px #fff,0 17px 36px -8px #29447755}
+article+article{border-color:#dce5f3}
+.example{color:#3c5077}
+a,.add summary,.add button{background:linear-gradient(145deg,#f4f8ff,#cfddf5);color:#233866;box-shadow:inset 0 1px 1px #fff,0 3px 7px #29447726}
+a:hover,.add summary:hover,.add button:hover{background:#e8f0ff}
+.add input{border-color:#a7b8d7}
+body{position:relative;isolation:isolate;min-height:100vh;background:#a9bddd}
+body::before,body::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none}
+body::before{
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='90' viewBox='0 0 52 90'%3E%3Cpath fill='none' stroke='%236785ad' stroke-width='1.2' d='M0 15 26 0 52 15V45L26 60 0 45ZM26 60V90'/%3E%3C/svg%3E") center top/52px 90px repeat,radial-gradient(ellipse at 50% 43%,#e4eeff,#b9cce9 42%,#8aa3ca);
+  background-blend-mode:soft-light,normal;
+}
+body::after{
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='90' viewBox='0 0 52 90'%3E%3Cpath fill='none' stroke='%23386dbb' stroke-width='1.2' d='M0 15 26 0 52 15V45L26 60 0 45ZM26 60V90'/%3E%3C/svg%3E") center top/52px 90px;
+  opacity:.48;mask-image:linear-gradient(108deg,transparent 26%,#000 50%,transparent 74%);mask-size:240% 100%;mask-repeat:no-repeat;
+  animation:hex-scan 13s ease-in-out infinite alternate;
+}
+@keyframes hex-scan{from{mask-position:0% 0}to{mask-position:100% 0}}
+@media(prefers-reduced-motion:reduce){body::after{animation:none;mask-position:50% 0}}
+main{background:transparent;min-height:0}
+header{display:flex;justify-content:center;align-items:center;gap:11px;background:transparent;border:0;backdrop-filter:none}
+header strong{margin:0;font:700 32px/1.15 Georgia,serif;letter-spacing:-.06em;color:#1a305e;text-shadow:0 1px 0 #f4f8ff,0 2px 0 #aabbd9,0 5px 9px #243d6940}
+header span{color:#304974;font-size:10px;font-weight:750;letter-spacing:.15em;text-transform:uppercase}
+.list,.add form{border-color:#748fb8;box-shadow:inset 0 1px 0 #e2edff,0 4px 8px -2px #192f6240,0 18px 30px -9px #192f626a}
+.list{padding:0 clamp(14px,3vw,24px)}
+a,.add summary,.add button{background:linear-gradient(120deg,#e8f1ff,#bdcff0);border-color:#a7bce0;color:#172e58}
+</style>
+<header><strong>Varodd</strong><span>Inkludering</span></header>
+<main><div class="wrap">
+<h1>Bedriftsoversikt</h1>
+<details class="add">
+<summary>+ Legg til bedrift</summary>
+<form action="varodd-arbeidsflyt.html#ny-bedrift">
+<label for="bedrift-url">Nettadresse til bedriften</label>
+<div class="fields">
+<input id="bedrift-url" type="url" placeholder="https://eksempel.no" required aria-describedby="url-hjelp">
+<button type="submit">Legg til og kartlegg</button>
+</div>
+<p id="url-hjelp">Du kan bruke bedriftens forside eller karriereside. Prototypen viser et eksempelresultat.</p>
+</form>
+</details>
+<p class="example">Eksempeldata · fiktive bedrifter</p>
+<div class="list">
+<article><div><h2>Sørvik Logistikk</h2><p>Lager og logistikk</p></div><a href="varodd-arbeidsflyt.html#sorvik" aria-label="Kartlegg kompetanse hos Sørvik Logistikk">Kartlegg kompetanse</a></article>
+<article><div><h2>Fjordglimt Analyse</h2><p>Data og analyse</p></div><a href="varodd-arbeidsflyt.html#fjordglimt" aria-label="Kartlegg kompetanse hos Fjordglimt Analyse">Kartlegg kompetanse</a></article>
+</div>
+</div></main>
+</html>
+
