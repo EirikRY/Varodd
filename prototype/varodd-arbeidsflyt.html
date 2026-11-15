@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="nb">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kompetanseoversikt · Varodd</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#10094b;color:#fff7ff;font:15px/1.5 system-ui,sans-serif}
+header{display:flex;align-items:center;gap:12px;padding:18px clamp(20px,5vw,72px);border-bottom:1px solid #ffffff24;background:#120950}
+header strong{font:bold 32px Georgia,serif;letter-spacing:-.06em}
+header span{color:#d8ccec;font-size:13px}
+main{min-height:calc(100vh - 75px);padding:clamp(24px,5vw,68px);background:radial-gradient(circle at 79% 46%,#41227666,transparent 45%),radial-gradient(circle,#d6adff38 1px,transparent 1.4px);background-size:auto,21px 21px}
+.wrap{max-width:1220px;margin:auto}
+h1{font:700 clamp(34px,6vw,59px)/1.05 Georgia,serif;letter-spacing:-.04em;margin:0 0 10px}
+.intro{color:#e1d3f5;margin:0}
+.flow{display:grid;grid-template-columns:minmax(0,1fr) 44px minmax(0,1fr) 44px minmax(0,1.6fr);align-items:center;margin-top:42px}
+.panel{background:#25195d;border:1px solid #665087;border-radius:17px;overflow:hidden;box-shadow:0 12px 35px #08032e6b}
+.panel h2{display:flex;gap:10px;align-items:center;margin:0;padding:14px 16px;border-bottom:1px solid #ffffff25;background:#2e206a;font-size:16px}
+.panel h2:before{content:"";width:8px;height:8px;border-radius:50%;background:#ffc0f7;flex:none}
+.content{padding:16px}
+.link{height:2px;background:#f0a7e5;position:relative}
+.link:after{content:"";position:absolute;right:2px;top:-3px;width:6px;height:6px;border-top:2px solid #f0a7e5;border-right:2px solid #f0a7e5;transform:rotate(45deg)}
+.companies,.skills{list-style:none;padding:0;margin:0;display:flex;gap:7px;flex-wrap:wrap}
+.companies li{width:100%;background:#392971;border-radius:8px;padding:8px 10px}
+.agent p{color:#e1d3f5;margin:0}
+.output{border-color:#eaa6df}
+.output h2{background:#ffc4f7;color:#26134e}
+.output h2:before{background:#633076}
+.example{color:#f3b9ec;font-size:13px;margin:0 0 10px}
+article{background:#392971;padding:11px;border-radius:10px}
+article+article{margin-top:8px}
+h3{font-size:15px;margin:0 0 7px}
+.skills li{background:#f8d7f6;color:#341751;border-radius:999px;padding:3px 8px;font-size:12px}
+@media(max-width:820px){.flow{grid-template-columns:minmax(0,1fr);max-width:550px;margin-top:25px}.link{width:2px;height:22px;margin:auto}.link:after{right:-3px;top:auto;bottom:2px;transform:rotate(135deg)}}
+body{background:#0b0920}
+header{background:#110e28;padding:13px clamp(20px,5vw,72px)}
+header strong{font-size:27px}
+main{min-height:calc(100vh - 58px);background:radial-gradient(ellipse at 72% 56%,#33215b82,transparent 53%),radial-gradient(circle,#c1a1ef29 1px,transparent 1.5px);background-size:auto,22px 22px}
+h1{font:600 clamp(23px,3vw,34px)/1.15 system-ui,sans-serif;letter-spacing:-.04em}
+.intro{font-size:14px;color:#c2b8d8}
+.flow{grid-template-columns:minmax(0,1fr) 72px minmax(0,1.06fr) 72px minmax(0,1.52fr);margin-top:clamp(45px,9vw,118px);padding-bottom:70px}
+.panel{background:#1a1534;border-color:#56496b;border-radius:14px;box-shadow:0 14px 35px #08061485}
+.panel h2{background:#231a40;font-size:14px}
+.panel h2:before{width:6px;height:6px;box-shadow:0 0 10px #ffc0f766}
+.companies li,article{background:#251d41}
+.output{border-color:#a676a9;box-shadow:0 0 36px #d576d629,0 14px 36px #0806148c}
+.output h2{background:linear-gradient(110deg,#3c2352,#2c214f);color:#ffe0fb}
+.output h2:before{background:#ffc0f7}
+.skills li{background:#493054;color:#ffe2fb}
+.link{height:72px;background:none}
+.link:after{display:none}
+.link svg{display:block;width:100%;height:100%;overflow:visible}
+.link path{fill:none;stroke:#b78cb9;stroke-width:1.4;vector-effect:non-scaling-stroke}
+.link circle{fill:#ffb9ed}
+@media(min-width:901px){.panel:first-child{transform:translateY(64px)}.output{transform:translateY(-48px)}}
+@media(max-width:900px){.flow{grid-template-columns:minmax(0,1fr);max-width:560px;margin-top:27px;padding-bottom:12px}.link{width:1px;height:24px;background:#b78cb9;margin:auto}.link svg{display:none}}
+.back{margin-left:auto;color:#ffe0fb}
+.flow:has(article:target) article:not(:target){display:none}
+.flow:has(#sorvik:target) .companies li:nth-child(2),.flow:has(#fjordglimt:target) .companies li:first-child{display:none}
+.simulation{color:#f3b9ec;font-size:13px;margin:10px 0 0}
+body{background:#f7f5fc;color:#21164b}
+header{background:#fff;border-color:#e6e0f3;flex-wrap:wrap}
+header span,.intro,.agent p{color:#534969}
+main{background-color:#f7f5fc;background-image:radial-gradient(ellipse at 72% 56%,#f7d8f68a,transparent 53%),radial-gradient(circle,#b6a4d85c 1px,transparent 1.5px)}
+.panel{background:#fff;border-color:#dfd6ed;box-shadow:0 10px 24px #41266a12}
+.panel h2{background:#f1edf9;border-color:#e6e0f3}
+.panel h2:before{background:#8d4996;box-shadow:none}
+.companies li,article{background:#f6f2fc}
+.output{border-color:#d7a8d5}
+.output h2{background:#f8dcf4;color:#362056}
+.skills li{background:#f5e4f5;color:#532554}
+.link path{stroke:#90629d}
+.link circle{fill:#a4559e}
+.example,.simulation{color:#6a3366}
+.back{color:#452775}
+body{background:#f5effb}
+header{background:#ffffff85;backdrop-filter:blur(18px);border-color:#fff}
+main{background-color:#f6f1fc;background-image:radial-gradient(ellipse at 82% 18%,#efb8edbc,transparent 49%),radial-gradient(ellipse at 15% 65%,#c2c2f4bd,transparent 55%),radial-gradient(circle,#77579b38 1px,transparent 1.5px);background-size:auto,auto,22px 22px}
+.panel{background:#ffffff88;border-color:#fff;backdrop-filter:blur(20px);box-shadow:0 12px 34px #4a2d7824,inset 0 1px 0 #fff}
+.panel h2{background:#ffffff45;border-color:#77609226}
+.output{background:#fff4ffc4;box-shadow:0 12px 36px #90548730,inset 0 1px 0 #fff}
+.output h2{background:#f3ceef88}
+.companies li,article{background:#ffffff80;border:1px solid #fff9}
+.skills li{background:#f1dcf2}
+.companies .new-company,article#ny-bedrift{display:none}
+.flow:has(#ny-bedrift:target) .companies li:not(.new-company){display:none}
+.flow:has(#ny-bedrift:target) .companies .new-company,article#ny-bedrift:target{display:block}
+.contact{margin-top:12px}.contact summary{width:fit-content;padding:5px 10px;border:1px solid #d9bddb;border-radius:8px;background:#fff8ff;color:#532554;font-weight:650;cursor:pointer}.contact p{margin:8px 0 0;overflow-wrap:anywhere}
+main{
+  background-image:radial-gradient(circle,#5d3e8850 1px,transparent 1.6px),radial-gradient(ellipse at 79% 25%,#da91cbb3,transparent 49%),radial-gradient(ellipse at 18% 66%,#9994d8cc,transparent 56%),linear-gradient(145deg,#e4dcf3,#cfc1e6);
+  background-size:22px 22px,auto,auto,auto
+}
+.panel{
+  background:linear-gradient(145deg,#ffffffcf 0%,#ffffff59 43%,#eee6f8a6 100%);
+  backdrop-filter:blur(14px) saturate(145%);
+  border:1px solid #fff;
+  box-shadow:inset 0 2px 1px #fff,inset 0 -2px 2px #79579b33,0 3px 6px #49336e24,0 17px 36px -8px #4b347a65,0 34px 62px -25px #53348068;
+}
+.panel h2{background:linear-gradient(120deg,#ffffff92,#ffffff30);border-bottom-color:#72558c26}
+.output{
+  background:linear-gradient(145deg,#fffbffe6,#fff1fa80 52%,#eed7f0bb);
+  box-shadow:inset 0 2px 1px #fff,inset 0 -2px 2px #93538238,0 4px 8px #58326b28,0 22px 45px -10px #773f7d66,0 38px 70px -25px #71366970;
+}
+.output h2{background:linear-gradient(115deg,#fff1f9ba,#efb5e4a3)}
+.companies li,.output article{background:linear-gradient(145deg,#ffffff91,#ffffff38);border-color:#ffffffb8;box-shadow:inset 0 1px 1px #fff,0 3px 8px #69457714}
+.link svg{filter:drop-shadow(0 2px 2px #633d8870)}
+.flow .panel h2{background:linear-gradient(120deg,#ffffff20,#ffffff03)}
+.flow .output h2{background:linear-gradient(120deg,#ffecfa2b,#efb5e412)}
+header{justify-content:center;background:transparent;border:0;backdrop-filter:none}
+.home-link{display:inline-flex;align-items:baseline;gap:8px;color:inherit;text-decoration:none;border-radius:4px}
+.home-link{transition:transform 180ms ease,filter 180ms ease}
+.home-link:hover{transform:translateY(-2px);filter:drop-shadow(0 4px 7px #913e9560)}
+@media(prefers-reduced-motion:reduce){.home-link{transition:none}.home-link:hover{transform:none}}
+.home-link:focus-visible{outline:2px solid #452775;outline-offset:5px}
+body{
+  position:relative;
+  isolation:isolate;
+  background:#657da9;
+}
+body::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:radial-gradient(circle,#243d6d60 1px,transparent 1.8px),radial-gradient(ellipse at center,#f5faffdd,transparent 64%),radial-gradient(ellipse at 84% 31%,#d4e6ffa0,transparent 48%),radial-gradient(ellipse at 18% 72%,#526fa6e0,transparent 57%),linear-gradient(145deg,#c1d2ee,#6983b4);
+  background-size:22px 22px,145% 145%,auto,auto,auto;
+  background-position:0 0,0% 100%,center,center,center;
+  filter:blur(.3px);
+  animation:varodd-light 18s ease-in-out infinite alternate;
+}
+@keyframes varodd-light{
+  to{background-position:0 0,100% 15%,center,center,center}
+}
+@media(prefers-reduced-motion:reduce){body::before{animation:none}}
+main{background:transparent}
+header{padding-block:17px}
+.home-link{align-items:center;gap:11px}
+.home-link strong{font-size:32px;color:#1a305e;text-shadow:0 1px 0 #f4f8ff,0 2px 0 #aabbd9,0 5px 9px #243d6940}
+.home-link span{color:#304974;font-size:10px;font-weight:750;letter-spacing:.15em;text-transform:uppercase;text-shadow:0 1px 0 #ffffff80}
+.home-link:hover{filter:drop-shadow(0 4px 7px #426ca853)}
+body{min-height:100vh}
+main{min-height:0;padding-block:12px 22px}
+.flow{margin-top:54px;padding-bottom:18px}
+@media(max-width:900px){.flow{margin:8px auto 0}}
+.composer{max-width:500px;margin:14px auto 0;padding:5px 6px 5px 13px;border:1px solid #ffffffd9;border-radius:999px;background:linear-gradient(145deg,#ffffffba,#f1e1f47a);backdrop-filter:blur(14px) saturate(140%);box-shadow:inset 0 1px 1px #fff,0 10px 24px -10px #4b347a75}
+.composer-row{display:flex;align-items:center;gap:8px}
+.composer input{flex:1;min-width:0;padding:5px 4px;border:0;background:transparent;color:#21164b;font:inherit}
+.composer input:focus-visible{outline:2px solid #805c9e;outline-offset:1px;border-radius:6px}
+.composer button{flex:none;width:30px;height:30px;border:1px solid #ffffffa6;border-radius:50%;background:#5a387c;color:#fff;font-size:17px;opacity:.72}
+@media(min-width:901px) and (min-height:520px){
+  .flow{margin-top:clamp(56px,14vh,104px);padding-bottom:clamp(32px,9vh,66px)}
+  .flow .panel > .content{padding:clamp(16px,3.8vh,24px)}
+  .agent-steps{row-gap:clamp(8px,1.8vh,12px)}
+  .composer{max-width:540px;margin-top:clamp(22px,7vh,52px);padding:7px 8px 7px 15px}
+  .composer button{width:34px;height:34px}
+}
+.flow .panel > .content{
+  background:linear-gradient(145deg,#fff,#f6f2fa);
+  color:#281753;
+  border-top:1px solid #ddd1e8;
+}
+.flow .output > .content{background:linear-gradient(145deg,#fff,#f3f6fd)}
+.flow .output h2{background:linear-gradient(120deg,#ffffff42,#aebfe626);color:#233866}
+.flow .agent p,.flow .example,.flow .simulation{color:#574463}
+.flow .companies li,.flow .output article{
+  background:#ffffffb3;
+  border-color:#e4dbea;
+  box-shadow:none;
+}
+.flow .output article{background:#fff}
+.flow .skills li{background:#f1d8ee;color:#43244e}
+.flow .contact summary{background:#fbf3fa;color:#532554;border-color:#ddc7e0}
+.agent-steps{list-style:none;counter-reset:agent-step;margin:0;padding:0;display:grid;gap:8px}
+.agent-steps li{counter-increment:agent-step;display:grid;grid-template-columns:22px minmax(0,1fr);gap:8px;align-items:center;color:#233866;font-size:13px;line-height:1.35}
+.agent-steps li::before{content:counter(agent-step);display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#e4ecfa;color:#233866;font-size:11px;font-weight:700}
+.flow .simulation{margin-top:10px;color:#4b5d80;font-size:12px}
+.flow .companies li{display:flex;align-items:center;gap:10px;padding:9px 11px;background:linear-gradient(145deg,#fff,#edf3ff);border-color:#d6e1f4;color:#233866;font-weight:650;box-shadow:inset 0 1px 0 #fff,0 4px 9px #29447716;overflow-wrap:anywhere}
+.flow .companies li::before{content:"";flex:0 0 29px;height:29px;border-radius:8px;background:linear-gradient(145deg,#e9f1ff,#d2dff5);box-shadow:inset 0 1px 0 #fff}
+.flow .companies li{position:relative}
+.flow .companies li::after{content:"";position:absolute;left:20px;top:50%;width:11px;height:13px;transform:translateY(-50%);border:1.5px solid #476496;border-radius:2px;background:radial-gradient(circle,#476496 1px,transparent 1.2px) 1px 1px/4px 4px}
+.flow .companies .new-company{display:none}
+.flow:has(#ny-bedrift:target) .companies .new-company{display:flex}
+.agent h2{flex-wrap:wrap}
+.agent-status{display:inline-flex;align-items:center;gap:5px;margin-left:auto;padding:3px 8px;border:1px solid #ffffffbd;border-radius:999px;background:#edf4ffb8;color:#284776;font-size:11px;font-weight:650;white-space:nowrap}
+.agent-status::before{content:"";width:6px;height:6px;border-radius:50%;background:#456eaf;box-shadow:0 0 0 2px #456eaf24}
+.flow .output article{padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}
+.flow .output article+article{margin-top:14px;padding-top:14px;border-top:1px solid #ded7eb}
+.flow .panel,.flow .output{
+  border-color:#748fb8;
+  box-shadow:inset 0 1px 0 #c4d4ee,0 4px 8px -2px #192f626b,0 18px 30px -9px #192f628a,0 34px 48px -22px #192f627d;
+}
+.flow .panel h2,.flow .output h2{
+  background:linear-gradient(120deg,#e9f2ffeb,#a6bde6c4);
+  border-bottom-color:#8ea8cf9c;
+  color:#233866;
+}
+.flow .output h3,.flow .output .skills li,.flow .output .contact summary,.flow .output .contact p{color:#233866}
+.flow .output .skills li{background:#e3ecfa}
+.flow .output .contact summary{background:#eef4ff;border-color:#b6c8e5}
+.flow .output .contact summary:hover{background:#dce9fc}
+.composer button{background:#35578c;border-color:#afc4e6}
+.flow{position:relative}
+.flow.drag-ready .panel{position:relative;translate:var(--drag-x,0px) var(--drag-y,0px)}
+.flow.drag-ready .panel h2{cursor:grab;touch-action:none;user-select:none}
+.flow.drag-ready .panel.is-dragging{z-index:2}
+.flow.drag-ready .panel.is-dragging h2{cursor:grabbing}
+.flow.drag-ready .link{visibility:hidden}
+.flow-wires{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:3}
+.flow-wires path{fill:none;stroke:#90629d;stroke-width:1.5}
+.flow-wires circle{fill:#a4559e}
+body{background:#a9bddd}
+body::before{
+  background:radial-gradient(ellipse at 50% 43%,#e4eeff 0%,#b9cce9 42%,#8aa3ca 100%);
+  background-size:auto;
+  background-position:center;
+  filter:none;
+  animation:none;
+}
+.brand-backdrop{
+  position:absolute;
+  inset:clamp(155px,38vh,345px) 0 auto;
+  z-index:-1;
+  pointer-events:none;
+  text-align:center;
+  white-space:nowrap;
+  color:#f7faff80;
+  font:700 clamp(75px,22vw,340px)/.85 Georgia,serif;
+  letter-spacing:-.065em;
+  padding-right:.065em;
+  text-shadow:0 8px 44px #496d9a28;
+}
+.flow{counter-reset:workflow-step}
+.flow .panel{counter-increment:workflow-step}
+.flow .panel h2::before{content:counter(workflow-step);display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#e8f1ff;color:#233866;font-size:11px;font-weight:750;box-shadow:inset 0 0 0 1px #adc1e1}
+body::before{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='90' viewBox='0 0 52 90'%3E%3Cpath fill='none' stroke='%236785ad' stroke-width='1.2' d='M0 15 26 0 52 15V45L26 60 0 45ZM26 60V90'/%3E%3C/svg%3E"),radial-gradient(ellipse at 50% 43%,#e4eeff 0%,#b9cce9 42%,#8aa3ca 100%);
+  background-size:52px 90px,auto;
+  background-position:center top,center;
+  background-repeat:repeat,no-repeat;
+  background-blend-mode:soft-light,normal;
+}
+body::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='90' viewBox='0 0 52 90'%3E%3Cpath fill='none' stroke='%23386dbb' stroke-width='1.2' d='M0 15 26 0 52 15V45L26 60 0 45ZM26 60V90'/%3E%3C/svg%3E") center top/52px 90px;
+  opacity:.48;
+  mask-image:linear-gradient(108deg,transparent 26%,#000 50%,transparent 74%);
+  mask-size:240% 100%;
+  mask-repeat:no-repeat;
+  animation:hex-scan 13s ease-in-out infinite alternate;
+}
+@keyframes hex-scan{from{mask-position:0% 0}to{mask-position:100% 0}}
+@media(prefers-reduced-motion:reduce){body::after{animation:none;mask-position:50% 0}}
+.flow .panel h2,.flow .output h2{background:linear-gradient(120deg,#d8e7fc,#8fafe1);border-bottom-color:#789bd0;color:#172e58}
+.flow .panel h2::before,.flow .agent-status{background:#d4e4ff;color:#16376a}
+.flow .panel h2::before{box-shadow:inset 0 0 0 1px #7399d1}
+.flow .agent-status{border-color:#b2c9ef}
+.flow .panel:first-child h2::before{background:#dbe8ff;color:#234780;box-shadow:inset 0 0 0 1px #8eaddd}
+.flow .agent h2::before{background:#ffe9bd;color:#754607;box-shadow:inset 0 0 0 1px #d8ab62}
+.flow .output h2::before{background:#d0efe9;color:#14554e;box-shadow:inset 0 0 0 1px #79b8af}
+.pdf-download{margin-top:14px;display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border:1px solid #b6c8e5;border-radius:8px;background:#eef4ff;color:#233866;font:inherit;font-weight:650;cursor:pointer}
+.pdf-download:hover{background:#dce9fc}
+.pdf-download:focus-visible{outline:2px solid #456eaf;outline-offset:3px}
+.pdf-download svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7}
+</style>
+<header><a class="home-link" href="index.html" aria-label="Varodd Inkludering – gå til forsiden"><strong>Varodd</strong><span>Inkludering</span></a></header>
+<main><div class="brand-backdrop" aria-hidden="true">Varodd</div><div class="wrap">
+<h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap">Kartlegging av kompetansebehov</h1>
+<div class="flow">
+  <section class="panel"><h2>Valgte bedrifter</h2><div class="content"><ul class="companies"><li>Sørvik Logistikk</li><li>Fjordglimt Analyse</li><li class="new-company">Ny bedrift fra nettadresse</li></ul></div></section>
+  <div class="link" aria-hidden="true"><svg viewBox="0 0 72 72" preserveAspectRatio="none"><path d="M0 100 C39 100 33 36 72 36"/><circle cx="0" cy="100" r="2.5"/><circle cx="72" cy="36" r="2.5"/></svg></div>
+  <section class="panel agent"><h2>KI-agent <span class="agent-status">Jobber &#8230;</span></h2><div class="content">
+    <ol class="agent-steps" role="list">
+      <li>Leser bedriftens nettsider</li>
+      <li>Finner etterspurt kompetanse</li>
+      <li>Samler funnene i oversikten</li>
+    </ol>
+    <div class="simulation">Simulert kartlegging</div>
+  </div></section>
+  <div class="link" aria-hidden="true"><svg viewBox="0 0 72 72" preserveAspectRatio="none"><path d="M0 36 C37 36 35 -12 72 -12"/><circle cx="0" cy="36" r="2.5"/><circle cx="72" cy="-12" r="2.5"/></svg></div>
+<section class="panel output"><h2>Kompetanseoversikt <span class="agent-status">Resultat</span></h2><div class="content">
+  <article id="sorvik"><h3>Sørvik Logistikk</h3><ul class="skills"><li>Varemottak</li><li>Plukk og pakk</li><li>Lagerregistrering</li></ul><details class="contact"><summary>Se kontaktinfo</summary><p>Eksempeldata<br>E-post: sorvik@example.com<br>Telefon: 00 00 00 00</p></details></article>
+  <article id="fjordglimt"><h3>Fjordglimt Analyse</h3><ul class="skills"><li>Excel</li><li>Datavask</li><li>Rapportering</li></ul><details class="contact"><summary>Se kontaktinfo</summary><p>Eksempeldata<br>E-post: fjordglimt@example.com<br>Telefon: 00 00 00 00</p></details></article>
+  <article id="ny-bedrift"><h3>Eksempelresultat for ny bedrift</h3><ul class="skills"><li>Kundeservice</li><li>Ordrebehandling</li><li>Varepåfylling</li></ul><details class="contact"><summary>Se kontaktinfo</summary><p>Eksempeldata<br>E-post: ny-bedrift@example.com<br>Telefon: 00 00 00 00</p></details></article>
+  <button class="pdf-download" type="button">
+    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2v10m-4-4 4 4 4-4M3 13v4h14v-4"/></svg>
+    Last ned PDF
+  </button>
+  </div></section>
+</div>
+<div class="composer"><div class="composer-row">
+  <input id="workflow-message" type="text" placeholder="Skriv til KI-agenten &#8230;" aria-label="Skriv til KI-agenten">
+  <button type="button" disabled aria-label="Send melding">&#8593;</button>
+</div></div>
+</div></main>
+<script>
+function pdfText(value) {
+  return Array.from(value, char => {
+    const code = char.charCodeAt(0);
+    if (code >= 32 && code <= 126) return '()\\'.includes(char) ? '\\' + char : char;
+    return code >= 160 && code <= 255 ? '\\' + code.toString(8) : '?';
+  }).join('');
+}
+
+function buildOverviewPdf(companies) {
+  let y = 780;
+  const lines = [];
+  function addLine(text, size, font, spacing) {
+    lines.push(`BT /${font} ${size} Tf 1 0 0 1 52 ${y} Tm (${pdfText(text)}) Tj ET\n`);
+    y -= spacing;
+  }
+  addLine('Varodd Inkludering', 12, 'F1', 28);
+  addLine('Kompetanseoversikt', 24, 'F2', 22);
+  addLine('Eksempeldata - fiktive bedrifter', 11, 'F1', 32);
+  for (const company of companies) {
+    addLine(company.name, 16, 'F2', 23);
+    for (const skill of company.skills) addLine('- ' + skill, 12, 'F1', 19);
+    y -= 14;
+  }
+  const stream = lines.join('');
+  const objects = [
+    '<< /Type /Catalog /Pages 2 0 R >>',
+    '<< /Type /Pages /Kids [3 0 R] /Count 1 >>',
+    '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>',
+    '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>',
+    '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>',
+    `<< /Length ${stream.length} >>\nstream\n${stream}endstream`
+  ];
+  let pdf = '%PDF-1.4\n';
+  const offsets = objects.map((object, index) => {
+    const offset = pdf.length;
+    pdf += `${index + 1} 0 obj\n${object}\nendobj\n`;
+    return offset;
+  });
+  const xref = pdf.length;
+  pdf += `xref\n0 ${objects.length + 1}\n0000000000 65535 f \n`;
+  for (const offset of offsets) pdf += `${String(offset).padStart(10, '0')} 00000 n \n`;
+  return pdf + `trailer\n<< /Size ${objects.length + 1} /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF\n`;
+}
+
+document.querySelector('.pdf-download').addEventListener('click', () => {
+  const companies = [...document.querySelectorAll('.output article')]
+    .filter(card => card.getClientRects().length > 0)
+    .map(card => ({
+      name: card.querySelector('h3').textContent.trim(),
+      skills: [...card.querySelectorAll('.skills li')].map(skill => skill.textContent.trim())
+    }));
+  if (!companies.length) return;
+  const url = URL.createObjectURL(new Blob([buildOverviewPdf(companies)], {type:'application/pdf'}));
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'varodd-kompetanseoversikt.pdf';
+  document.body.append(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+});
+
+const flow = document.querySelector('.flow');
+
+
+const panels = [...flow.querySelectorAll('.panel')];
+const namespace = 'http://www.w3.org/2000/svg';
+const wires = document.createElementNS(namespace, 'svg');
+wires.classList.add('flow-wires');
+wires.setAttribute('aria-hidden', 'true');
+const connections = panels.slice(1).map(() =>
+  ['path', 'circle', 'circle'].map(tag => {
+    const shape = document.createElementNS(namespace, tag);
+    if (tag === 'circle') shape.setAttribute('r', '2.5');
+    wires.append(shape);
+    return shape;
+  })
+);
+flow.append(wires);
+flow.classList.add('drag-ready');
+const stacked = matchMedia('(max-width:900px)');
+
+function drawWires() {
+  const origin = wires.getBoundingClientRect();
+  connections.forEach(([path, start, end], index) => {
+    const a = panels[index].getBoundingClientRect();
+    const b = panels[index + 1].getBoundingClientRect();
+    const vertical = stacked.matches;
+    const x1 = (vertical ? a.left + a.width / 2 : a.right) - origin.left;
+    const y1 = (vertical ? a.bottom : a.top + a.height / 2) - origin.top;
+    const x2 = (vertical ? b.left + b.width / 2 : b.left) - origin.left;
+    const y2 = (vertical ? b.top : b.top + b.height / 2) - origin.top;
+    const midX = (x1 + x2) / 2;
+    const midY = (y1 + y2) / 2;
+    path.setAttribute('d', vertical
+      ? `M ${x1} ${y1} C ${x1} ${midY}, ${x2} ${midY}, ${x2} ${y2}`
+      : `M ${x1} ${y1} C ${midX} ${y1}, ${midX} ${y2}, ${x2} ${y2}`);
+    start.setAttribute('cx', x1);
+    start.setAttribute('cy', y1);
+    end.setAttribute('cx', x2);
+    end.setAttribute('cy', y2);
+  });
+}
+
+const observer = new ResizeObserver(drawWires);
+observer.observe(flow);
+const offsets = panels.map(() => ({x:0,y:0}));
+const gap = 20;
+
+function workspaceBounds() { return {left:0,top:0,right:document.documentElement.clientWidth,bottom:innerHeight}; }
+
+function separateCards(boxes, active, dx, dy, bounds) {
+  const moved = boxes.map(box => ({...box}));
+  const shift = (box, x, y) => {
+    box.left += x; box.right += x; box.top += y; box.bottom += y;
+  };
+  const fits = (box, index) => {
+    const original = boxes[index];
+    return box.left >= Math.min(bounds.left, original.left) && box.right <= Math.max(bounds.right, original.right)
+      && box.top >= Math.min(bounds.top, original.top) && box.bottom <= Math.max(bounds.bottom, original.bottom);
+  };
+  shift(moved[active], dx, dy);
+  if (!fits(moved[active], active)) return null;
+  for (let pass = 0; pass < 12; pass++) {
+    let collision = false;
+    for (let i = 0; i < moved.length; i++) {
+      for (let j = i + 1; j < moved.length; j++) {
+        const source = j === active ? j : i;
+        const target = source === i ? j : i;
+        const a = moved[source];
+        const b = moved[target];
+        if (a.right + gap <= b.left || b.right + gap <= a.left ||
+            a.bottom + gap <= b.top || b.bottom + gap <= a.top) continue;
+        collision = true;
+        const horizontal = a.left + a.right <= b.left + b.right ? a.right + gap - b.left : a.left - gap - b.right;
+        const vertical = a.top + a.bottom <= b.top + b.bottom ? a.bottom + gap - b.top : a.top - gap - b.bottom;
+        const options = [[horizontal,0],[0,vertical]].sort((p,q) =>
+          Math.abs(p[0] + p[1]) - Math.abs(q[0] + q[1]));
+        const next = options.map(([x,y]) => {
+          const candidate = {...b};
+          shift(candidate,x,y);
+          return candidate;
+        }).find(candidate => fits(candidate,target));
+        if (!next) return null;
+        moved[target] = next;
+      }
+    }
+    if (!collision) return moved;
+  }
+  return null;
+}
+
+for (const [index, panel] of panels.entries()) {
+  observer.observe(panel);
+  const title = panel.querySelector('h2');
+  const position = offsets[index];
+  let drag = null;
+  title.addEventListener('pointerdown', event => {
+    if (!event.isPrimary || event.button !== 0) return;
+    const box = panel.getBoundingClientRect();
+    const {x,y} = position;
+    const bounds = workspaceBounds();
+    drag = {id:event.pointerId, startX:event.clientX-x, startY:event.clientY-y,
+      minX:x+Math.min(0,bounds.left-box.left),maxX:x+Math.max(0,bounds.right-box.right),
+      minY:y+Math.min(0,bounds.top-box.top),maxY:y+Math.max(0,bounds.bottom-box.bottom)};
+    title.setPointerCapture(event.pointerId);
+    panel.classList.add('is-dragging');
+  });
+  title.addEventListener('pointermove', event => {
+    if (drag?.id !== event.pointerId) return;
+    const x = Math.min(drag.maxX, Math.max(drag.minX, event.clientX-drag.startX));
+    const y = Math.min(drag.maxY, Math.max(drag.minY, event.clientY-drag.startY));
+    const dx = x-position.x;
+    const dy = y-position.y;
+    const steps = Math.max(1,Math.ceil(Math.hypot(dx,dy)/12));
+    const bounds = workspaceBounds();
+    const initial = panels.map(item => {
+      const {left,right,top,bottom} = item.getBoundingClientRect();
+      return {left,right,top,bottom};
+    });
+    let boxes = initial;
+    for (let step = 0; step < steps; step++) {
+      const next = separateCards(boxes,index,dx/steps,dy/steps,bounds);
+      if (!next) break;
+      boxes = next;
+    }
+    panels.forEach((item,i) => {
+      offsets[i].x += boxes[i].left-initial[i].left;
+      offsets[i].y += boxes[i].top-initial[i].top;
+      item.style.setProperty('--drag-x', offsets[i].x+'px');
+      item.style.setProperty('--drag-y', offsets[i].y+'px');
+    });
+    drawWires();
+  });
+  title.addEventListener('lostpointercapture', () => {
+    drag = null;
+    panel.classList.remove('is-dragging');
+  });
+  window.addEventListener('resize', () => {
+    position.x = position.y = 0;
+    panel.style.removeProperty('--drag-x');
+    panel.style.removeProperty('--drag-y');
+  });
+}
+window.addEventListener('resize', () => requestAnimationFrame(drawWires));
+drawWires();
+</script>
+</html>
+
+
+
+
+
+
