@@ -266,10 +266,56 @@ body::after{
 .pdf-download:hover{background:#dce9fc}
 .pdf-download:focus-visible{outline:2px solid #456eaf;outline-offset:3px}
 .pdf-download svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7}
+.result-bar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin:0 0 18px;color:#233866}
+.result-bar[hidden]{display:none}
+.result-bar h2{margin:0;font-size:clamp(23px,4vw,36px);letter-spacing:-.035em}
+.result-bar p{margin:2px 0 0;color:#40577e}
+.result-bar button{padding:8px 13px;border:1px solid #a7bce0;border-radius:9px;background:#eef4ff;color:#233866;font:inherit;font-weight:650;cursor:pointer}
+.result-bar button:hover{background:#e1ecff}
+.result-mode{max-width:960px}
+.result-mode .flow{display:block;max-width:none;margin:0;padding:0}
+.result-mode .flow .panel{transform:none;translate:none}
+.result-mode .flow .panel h2{cursor:default;touch-action:auto;user-select:text}
+.result-mode .flow .panel:first-child,.result-mode .flow .agent{display:none}
+.result-mode .flow .output{border-color:#a1b7dc;border-radius:22px;box-shadow:0 16px 42px -19px #2545778c}
+.result-mode .flow .output > h2{display:none}
+.result-mode .flow .output > .content{padding:clamp(18px,3vw,34px);background:linear-gradient(145deg,#fff,#f2f6fd)}
+.result-mode .flow .link,.result-mode .flow .flow-wires{display:none}
+.result-mode .output article{scroll-margin-top:100vh}
+.result-mode .output h3{font-size:clamp(24px,3.2vw,38px);line-height:1.15;letter-spacing:-.035em}
+.result-mode .composer{margin-top:24px}
+.result-actions{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.result-actions .pdf-download{margin:0;background:#254878;color:white;border-color:#254878}
+.result-actions .pdf-download:hover{background:#1d3b65}
+.agent-steps li.is-current{font-weight:750}
+.agent-steps li.is-current::before{background:#ffe9bd;color:#754607}
+.agent-steps li.is-done::before{background:#d0efe9;color:#14554e}
+::view-transition-group(varodd-company),::view-transition-group(varodd-agent),::view-transition-group(varodd-findings){animation-duration:420ms;animation-timing-function:cubic-bezier(.22,1,.36,1)}
+.finding-details{display:none}
+.result-mode .finding-details{display:block;margin:20px 0 0}
+.result-mode .output .skills{display:none}
+.finding-details dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:0}
+.finding-details dl div{display:grid;align-content:start;gap:6px;padding:12px 0 0;border-top:2px solid #a8bee3}
+.finding-details dt{font-weight:700;color:#233866}
+.finding-details dd{margin:0;color:#40577e}
+.practice-question{margin:22px 0 0;padding:13px 16px;border-radius:12px;background:#e8f0ff;color:#233866}
+.practice-question strong{display:block;margin-bottom:3px}
+@media(max-width:650px){.finding-details dl{grid-template-columns:minmax(0,1fr);gap:11px}}
+.mapping-ready[hidden],.mapping-ready button[hidden]{display:none}
+.mapping-preview .flow .output .content article,.mapping-preview .flow .output .pdf-download{display:none}
+.mapping-ready p{margin:0;color:#40577e}
+.mapping-ready.is-ready p{color:#205942;font-weight:700}
+.mapping-ready button{margin-top:12px;padding:8px 13px;border:1px solid #9ecdb8;border-radius:9px;background:#dff2e9;color:#205942;font:inherit;font-weight:700;cursor:pointer}
+.mapping-ready button:hover{background:#cde9db}
+.mapping-ready button:focus-visible{outline:2px solid #205942;outline-offset:3px}
 </style>
 <header><a class="home-link" href="index.html" aria-label="Varodd Inkludering – gå til forsiden"><strong>Varodd</strong><span>Inkludering</span></a></header>
 <main><div class="brand-backdrop" aria-hidden="true">Varodd</div><div class="wrap">
 <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap">Kartlegging av kompetansebehov</h1>
+<div class="result-bar" hidden>
+  <div><h2>Resultat fra kartleggingen</h2><p>Eksempeldata &middot; simulert kartlegging</p></div>
+  <div class="result-actions"><button class="show-flow" type="button">Vis arbeidsflyt</button></div>
+</div>
 <div class="flow">
   <section class="panel"><h2>Valgte bedrifter</h2><div class="content"><ul class="companies"><li>Sørvik Logistikk</li><li>Fjordglimt Analyse</li><li class="new-company">Ny bedrift fra nettadresse</li></ul></div></section>
   <div class="link" aria-hidden="true"><svg viewBox="0 0 72 72" preserveAspectRatio="none"><path d="M0 100 C39 100 33 36 72 36"/><circle cx="0" cy="100" r="2.5"/><circle cx="72" cy="36" r="2.5"/></svg></div>
@@ -283,9 +329,34 @@ body::after{
   </div></section>
   <div class="link" aria-hidden="true"><svg viewBox="0 0 72 72" preserveAspectRatio="none"><path d="M0 36 C37 36 35 -12 72 -12"/><circle cx="0" cy="36" r="2.5"/><circle cx="72" cy="-12" r="2.5"/></svg></div>
 <section class="panel output"><h2>Kompetanseoversikt <span class="agent-status">Resultat</span></h2><div class="content">
-  <article id="sorvik"><h3>Sørvik Logistikk</h3><ul class="skills"><li>Varemottak</li><li>Plukk og pakk</li><li>Lagerregistrering</li></ul><details class="contact"><summary>Se kontaktinfo</summary><p>Eksempeldata<br>E-post: sorvik@example.com<br>Telefon: 00 00 00 00</p></details></article>
-  <article id="fjordglimt"><h3>Fjordglimt Analyse</h3><ul class="skills"><li>Excel</li><li>Datavask</li><li>Rapportering</li></ul><details class="contact"><summary>Se kontaktinfo</summary><p>Eksempeldata<br>E-post: fjordglimt@example.com<br>Telefon: 00 00 00 00</p></details></article>
-  <article id="ny-bedrift"><h3>Eksempelresultat for ny bedrift</h3><ul class="skills"><li>Kundeservice</li><li>Ordrebehandling</li><li>Varepåfylling</li></ul><details class="contact"><summary>Se kontaktinfo</summary><p>Eksempeldata<br>E-post: ny-bedrift@example.com<br>Telefon: 00 00 00 00</p></details></article>
+  <div class="mapping-ready" hidden>
+    <p role="status"></p>
+    <button type="button" class="show-result" hidden>Vis resultat</button>
+  </div>
+  <article id="sorvik"><h3>Sørvik Logistikk</h3><ul class="skills"><li>Varemottak</li><li>Plukk og pakk</li><li>Lagerregistrering</li></ul><div class="finding-details">
+<dl>
+<div><dt>Varemottak</dt><dd>Ta imot varer, telle dem og sjekke at leveransen stemmer.</dd></div>
+<div><dt>Plukk og pakk</dt><dd>Finne varer p&aring; lageret, pakke bestillinger og merke pakkene.</dd></div>
+<div><dt>Lagerregistrering</dt><dd>Registrere varer inn og ut i et lagersystem.</dd></div>
+</dl>
+<p class="practice-question"><strong>Forslag til sp&oslash;rsm&aring;l om arbeidspraksis</strong>Kan plukk og pakking v&aelig;re aktuelt som arbeidspraksis, og kan dere gi oppl&aelig;ring i oppgavene?</p>
+</div><details class="contact"><summary>Se kontaktinfo</summary><p>Eksempeldata<br>E-post: sorvik@example.com<br>Telefon: 00 00 00 00</p></details></article>
+  <article id="fjordglimt"><h3>Fjordglimt Analyse</h3><ul class="skills"><li>Excel</li><li>Datavask</li><li>Rapportering</li></ul><div class="finding-details">
+<dl>
+<div><dt>Excel</dt><dd>Sortere data og lage enkle oversikter i regneark.</dd></div>
+<div><dt>Datavask</dt><dd>Rette formater og finne duplikater i datasett.</dd></div>
+<div><dt>Rapportering</dt><dd>Oppsummere tall i tabeller og enkle diagrammer.</dd></div>
+</dl>
+<p class="practice-question"><strong>Forslag til sp&oslash;rsm&aring;l om arbeidspraksis</strong>Har dere et avgrenset datasett en praksisdeltaker kan &oslash;ve p&aring; &aring; rydde med veiledning?</p>
+</div><details class="contact"><summary>Se kontaktinfo</summary><p>Eksempeldata<br>E-post: fjordglimt@example.com<br>Telefon: 00 00 00 00</p></details></article>
+  <article id="ny-bedrift"><h3>Eksempelresultat for ny bedrift</h3><ul class="skills"><li>Kundeservice</li><li>Ordrebehandling</li><li>Varepåfylling</li></ul><div class="finding-details">
+<dl>
+<div><dt>Kundeservice</dt><dd>Svare p&aring; vanlige sp&oslash;rsm&aring;l fra kunder.</dd></div>
+<div><dt>Ordrebehandling</dt><dd>Registrere bestillinger og sjekke at opplysningene stemmer.</dd></div>
+<div><dt>Varep&aring;fylling</dt><dd>Fylle p&aring; varer og holde orden i hyllene.</dd></div>
+</dl>
+<p class="practice-question"><strong>Forslag til sp&oslash;rsm&aring;l om arbeidspraksis</strong>Kan en praksisdeltaker begynne med varep&aring;fylling og f&aring; oppl&aelig;ring p&aring; stedet?</p>
+</div><details class="contact"><summary>Se kontaktinfo</summary><p>Eksempeldata<br>E-post: ny-bedrift@example.com<br>Telefon: 00 00 00 00</p></details></article>
   <button class="pdf-download" type="button">
     <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2v10m-4-4 4 4 4-4M3 13v4h14v-4"/></svg>
     Last ned PDF
@@ -379,8 +450,102 @@ const connections = panels.slice(1).map(() =>
 flow.append(wires);
 flow.classList.add('drag-ready');
 const stacked = matchMedia('(max-width:900px)');
+const dashboard = document.querySelector('.wrap');
+const resultBar = document.querySelector('.result-bar');
+const showFlow = document.querySelector('.show-flow');
+const pdfButton = document.querySelector('.pdf-download');
+const pdfHome = pdfButton.parentElement;
+const resultActions = resultBar.querySelector('.result-actions');
+const agentStatus = flow.querySelector('.agent .agent-status');
+const resultStatus = flow.querySelector('.output .agent-status');
+const readiness = flow.querySelector('.mapping-ready');
+const readyMessage = readiness.querySelector('p');
+const showResult = readiness.querySelector('.show-result');
+const steps = [...flow.querySelectorAll('.agent-steps li')];
+const reducedMotion = matchMedia('(prefers-reduced-motion:reduce)');
+let mappingTimers = [];
+
+function setDashboard(show, animate) {
+  function applyLayout() {
+    dashboard.classList.toggle('result-mode', show);
+    if (show) {
+      dashboard.classList.remove('mapping-preview');
+      readiness.hidden = true;
+      resultStatus.textContent = 'Resultat';
+    }
+    resultBar.hidden = !show;
+    (show ? resultActions : pdfHome).append(pdfButton);
+    agentStatus.textContent = show ? 'Kartlagt' : 'Jobber …';
+    if (show) steps.forEach(step => {
+      step.classList.remove('is-current');
+      step.classList.add('is-done');
+    });
+    if (!show) requestAnimationFrame(drawWires);
+  }
+  if (!animate || reducedMotion.matches || !document.startViewTransition) {
+    applyLayout();
+    return;
+  }
+  panels.forEach((panel,i) => {
+    panel.style.viewTransitionName = ['varodd-company','varodd-agent','varodd-findings'][i];
+  });
+  const transition = document.startViewTransition(applyLayout);
+  const clearNames = () => panels.forEach(panel => panel.style.removeProperty('view-transition-name'));
+  transition.finished.then(clearNames,clearNames);
+}
+
+function simulateMapping() {
+  dashboard.classList.add('mapping-preview');
+  readiness.hidden = false;
+  readiness.classList.remove('is-ready');
+  showResult.hidden = true;
+  readyMessage.textContent = 'Kartlegging pågår …';
+  resultStatus.textContent = 'Venter';
+  steps.forEach((step,i) => {
+    step.classList.remove('is-done');
+    step.classList.toggle('is-current', i === 0);
+  });
+  steps.slice(1).forEach((step,i) => {
+    mappingTimers.push(setTimeout(() => {
+      steps[i].classList.remove('is-current');
+      steps[i].classList.add('is-done');
+      step.classList.add('is-current');
+    }, 1050*(i+1)));
+  });
+  mappingTimers.push(setTimeout(() => {
+    steps.forEach(step => {
+      step.classList.remove('is-current');
+      step.classList.add('is-done');
+    });
+    agentStatus.textContent = 'Kartlagt';
+    resultStatus.textContent = 'Klar';
+    readiness.classList.add('is-ready');
+    readyMessage.textContent = 'Resultatet er klart';
+    showResult.hidden = false;
+  }, 3250));
+}
+
+function openCompany() {
+  mappingTimers.forEach(clearTimeout);
+  mappingTimers = [];
+  dashboard.classList.remove('mapping-preview');
+  readiness.hidden = true;
+  resultStatus.textContent = 'Resultat';
+  const mapped = location.hash === '#sorvik';
+  setDashboard(mapped,false);
+  if (!mapped && location.hash) simulateMapping();
+}
+showFlow.addEventListener('click', () => {
+  mappingTimers.forEach(clearTimeout);
+  mappingTimers = [];
+  setDashboard(false,true);
+  simulateMapping();
+});
+showResult.addEventListener('click', () => setDashboard(true,true));
+window.addEventListener('hashchange',openCompany);
 
 function drawWires() {
+  if (dashboard.classList.contains('result-mode')) return;
   const origin = wires.getBoundingClientRect();
   connections.forEach(([path, start, end], index) => {
     const a = panels[index].getBoundingClientRect();
@@ -456,7 +621,7 @@ for (const [index, panel] of panels.entries()) {
   const position = offsets[index];
   let drag = null;
   title.addEventListener('pointerdown', event => {
-    if (!event.isPrimary || event.button !== 0) return;
+    if (dashboard.classList.contains('result-mode') || !event.isPrimary || event.button !== 0) return;
     const box = panel.getBoundingClientRect();
     const {x,y} = position;
     const bounds = workspaceBounds();
@@ -504,8 +669,10 @@ for (const [index, panel] of panels.entries()) {
 }
 window.addEventListener('resize', () => requestAnimationFrame(drawWires));
 drawWires();
+openCompany();
 </script>
 </html>
+
 
 
 

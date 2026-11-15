@@ -87,6 +87,11 @@ header span{color:#304974;font-size:10px;font-weight:750;letter-spacing:.15em;te
 .list,.add form{border-color:#748fb8;box-shadow:inset 0 1px 0 #e2edff,0 4px 8px -2px #192f6240,0 18px 30px -9px #192f626a}
 .list{padding:0 clamp(14px,3vw,24px)}
 a,.add summary,.add button{background:linear-gradient(120deg,#e8f1ff,#bdcff0);border-color:#a7bce0;color:#172e58}
+.company-actions{display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px}
+.company-status{display:inline-flex;align-items:center;gap:6px;padding:4px 9px;border:1px solid;border-radius:999px;font-size:13px;font-weight:650}
+.company-status::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.company-status.is-mapped{background:#dff2e9;border-color:#9ecdb8;color:#205942}
+.company-status.is-unmapped{background:#fff0d3;border-color:#e6c184;color:#6e470e}
 </style>
 <header><strong>Varodd</strong><span>Inkludering</span></header>
 <main><div class="wrap">
@@ -104,9 +109,13 @@ a,.add summary,.add button{background:linear-gradient(120deg,#e8f1ff,#bdcff0);bo
 </details>
 <p class="example">Eksempeldata · fiktive bedrifter</p>
 <div class="list">
-<article><div><h2>Sørvik Logistikk</h2><p>Lager og logistikk</p></div><a href="varodd-arbeidsflyt.html#sorvik" aria-label="Kartlegg kompetanse hos Sørvik Logistikk">Kartlegg kompetanse</a></article>
-<article><div><h2>Fjordglimt Analyse</h2><p>Data og analyse</p></div><a href="varodd-arbeidsflyt.html#fjordglimt" aria-label="Kartlegg kompetanse hos Fjordglimt Analyse">Kartlegg kompetanse</a></article>
+<article><div><h2>Sørvik Logistikk</h2><p>Lager og logistikk</p></div><div class="company-actions"><span class="company-status is-mapped">Kartlagt</span><a href="varodd-arbeidsflyt.html#sorvik" aria-label="Kartlegg kompetanse hos S&oslash;rvik Logistikk">Kartlegg kompetanse</a></div></article>
+<article><div><h2>Fjordglimt Analyse</h2><p>Data og analyse</p></div><div class="company-actions"><span class="company-status is-unmapped">Ikke kartlagt</span><a href="varodd-arbeidsflyt.html#fjordglimt" aria-label="Kartlegg kompetanse hos Fjordglimt Analyse">Kartlegg kompetanse</a></div></article>
 </div>
 </div></main>
 </html>
+
+
+
+
 
