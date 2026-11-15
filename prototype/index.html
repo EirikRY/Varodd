@@ -92,6 +92,16 @@ a,.add summary,.add button{background:linear-gradient(120deg,#e8f1ff,#bdcff0);bo
 .company-status::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
 .company-status.is-mapped{background:#dff2e9;border-color:#9ecdb8;color:#205942}
 .company-status.is-unmapped{background:#fff0d3;border-color:#e6c184;color:#6e470e}
+.add{interpolate-size:allow-keywords}
+.add summary{transition:background 180ms ease,box-shadow 180ms ease}
+.add form{animation:add-form-in 260ms cubic-bezier(.22,1,.36,1) both}
+@keyframes add-form-in{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
+@supports (interpolate-size:allow-keywords) and selector(details::details-content){
+  .add::details-content{block-size:0;overflow:clip;overflow-clip-margin:28px;opacity:0;transition:block-size 320ms cubic-bezier(.22,1,.36,1),opacity 220ms ease,content-visibility 320ms allow-discrete}
+  .add[open]::details-content{block-size:auto;opacity:1}
+  .add form{animation:none}
+}
+@media(prefers-reduced-motion:reduce){.add::details-content,.add summary{transition:none}.add form{animation:none}}
 </style>
 <header><strong>Varodd</strong><span>Inkludering</span></header>
 <main><div class="wrap">
