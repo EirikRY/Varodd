@@ -340,6 +340,195 @@ body:has(.result-mode) .brand-backdrop{display:none}
 .output .contact dl div{display:flex;flex-wrap:wrap;gap:0 6px;min-width:0}
 .output .contact dt{font-weight:650}
 .output .contact dd{margin:0;overflow-wrap:anywhere;min-width:0}
+.candidate-matches{display:none}
+.result-mode .candidate-matches{display:block;margin-top:22px;padding-top:16px;border-top:1px solid #a4bcdd70}
+.candidate-matches h4{margin:0;color:#233866;font-size:17px}
+.candidate-matches > p{margin:4px 0 12px;color:#40577e;font-size:13px}
+.candidate-matches ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.candidate-matches li{padding:11px 12px;border:1px solid #a4bcdd70;border-radius:10px;background:#ffffff75;color:#233866}
+.candidate-matches li strong{display:block;margin-bottom:4px}
+.candidate-matches li span{display:block;color:#40577e;font-size:13px}
+@media(max-width:620px){.candidate-matches ul{grid-template-columns:1fr}}
+body:has(.result-mode) main{padding-bottom:calc(82px + env(safe-area-inset-bottom))}
+.result-mode{max-width:1080px;align-items:start;gap:14px}
+.result-mode .result-bar{padding:14px;gap:12px;align-self:start}
+.result-mode .flow .output > .content{padding:clamp(15px,2vw,24px)}
+.result-mode .output article:target{margin-top:0;padding-top:0;border-top:0}
+.result-mode .output h3{font-size:clamp(22px,2.6vw,32px)}
+.result-mode .finding-details{margin-top:14px}
+.result-mode .finding-details dl{gap:9px}
+.result-mode .finding-details dl div{padding:9px 11px}
+.result-mode .practice-question{margin-top:13px;padding:9px 12px}
+.result-mode .candidate-matches{margin-top:13px;padding-top:10px}
+.result-mode .candidate-matches > p{margin-bottom:8px}
+.result-mode .candidate-matches li{padding:8px 10px}
+.result-mode .output .contact{margin-top:12px;padding-top:9px}
+.result-mode .composer{
+  position:fixed;
+  z-index:5;
+  left:50%;
+  bottom:calc(14px + env(safe-area-inset-bottom));
+  transform:translateX(-50%);
+  width:min(540px,calc(100% - 28px));
+  margin:0;
+  background:linear-gradient(145deg,#f7fafff5,#d8e6fff0);
+  box-shadow:0 5px 20px #29447750;
+}
+.dashboard-sections{display:none}
+.result-mode .dashboard-sections{display:flex;flex-wrap:wrap;gap:5px;margin:0 0 14px}
+.dashboard-sections button{padding:6px 12px;border:1px solid transparent;border-radius:8px;background:transparent;color:#233866;font:inherit;font-size:13px;font-weight:650;cursor:pointer}
+.dashboard-sections button[aria-pressed="true"]{border-color:#a4bcdd;background:#edf5ff}
+.dashboard-sections button:focus-visible{outline:2px solid #456eaf;outline-offset:2px}
+.result-mode[data-section="findings"] .practice-question,
+.result-mode[data-section="findings"] .candidate-matches,
+.result-mode[data-section="findings"] .contact,
+.result-mode[data-section="candidates"] .finding-details,
+.result-mode[data-section="candidates"] .contact,
+.result-mode[data-section="contact"] .finding-details dl,
+.result-mode[data-section="contact"] .candidate-matches{display:none}
+.dashboard-sections [data-view="findings"]{--tab-ink:#244e89;--tab-fill:#deebff;--tab-border:#a9c3e8}
+.dashboard-sections [data-view="candidates"]{--tab-ink:#205942;--tab-fill:#dff2e9;--tab-border:#9ecdb8}
+.dashboard-sections [data-view="contact"]{--tab-ink:#72460f;--tab-fill:#fff0d3;--tab-border:#e6c184}
+.dashboard-sections button{color:var(--tab-ink);display:inline-flex;align-items:center;gap:6px}
+.dashboard-sections button::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.dashboard-sections button[aria-pressed="true"]{background:var(--tab-fill);border-color:var(--tab-border)}
+.result-mode[data-section="candidates"] .candidate-matches li{background:#ecf8f1;border-color:#acd2bf}
+.result-mode[data-section="contact"] .practice-question{background:#fff4df;border-color:#e6c184}
+.agent-toggle{display:none}
+.agent-toggle{display:block;position:fixed;z-index:6;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));padding:9px 14px;border:1px solid #98b5df;border-radius:999px;background:#edf5ff;color:#233866;font:inherit;font-weight:650;cursor:pointer;box-shadow:0 4px 16px #29447740}
+.agent-toggle:hover{background:#dfeeff}
+.agent-toggle:focus-visible{outline:2px solid #456eaf;outline-offset:2px}
+.result-mode:not(.agent-open) .composer{display:none}
+.result-mode .composer{left:auto;right:14px;bottom:calc(64px + env(safe-area-inset-bottom));transform:none;width:min(365px,calc(100% - 28px))}
+body:has(.wrap.agent-open) main{padding-bottom:calc(122px + env(safe-area-inset-bottom))}
+.result-mode .dashboard-sections{
+  width:fit-content;max-width:100%;gap:3px;
+}
+.agent-side{display:contents}
+.agent-side-head,.agent-side-example{display:none}
+.wrap:not(.agent-open) .agent-side{display:none}
+.wrap.agent-open .agent-side{
+  display:flex;flex-direction:column;gap:12px;min-width:0;padding:14px;
+  border:1px solid #edf5ff;border-radius:17px;
+  background:linear-gradient(145deg,#f4f9fff0,#c4d8f4cc);
+  backdrop-filter:blur(16px);box-shadow:0 12px 27px -13px #28487a75;color:#233866;
+}
+.wrap.agent-open .agent-side-head{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.agent-side-head h2{margin:0;font-size:16px}
+.agent-close{padding:3px 9px;border:1px solid #aec4e5;border-radius:8px;background:#edf5ff;color:#233866;font:inherit;cursor:pointer}
+.wrap.agent-open .agent-side-example{display:block;margin:0;padding:11px;border:1px solid #b9ccea;border-radius:10px;background:#ffffff85;font-size:13px}
+.agent-side-example strong{display:block;margin-bottom:3px}
+.wrap.agent-open .composer{position:static;width:100%;margin:auto 0 0;background:#f4f8ff;box-shadow:none}
+body:has(.wrap.agent-open) main{padding-bottom:calc(82px + env(safe-area-inset-bottom))}
+.result-mode.agent-open .finding-details dl{grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr))}
+@media(min-width:590px){
+  .result-mode.agent-open{grid-template-columns:clamp(190px,28vw,290px) minmax(0,1fr)}
+  .result-mode.agent-open .agent-side{grid-area:1 / 1 / span 2;position:sticky;top:12px;min-height:275px}
+  .result-mode.agent-open .result-bar{grid-area:1 / 2}
+  .result-mode.agent-open .result-actions{display:flex;flex-wrap:wrap}
+  .result-mode.agent-open .flow{grid-area:2 / 2}
+}
+@media(max-width:589px){.result-mode.agent-open .agent-side{grid-row:1}}
+.agent-divider{display:none}
+@media(min-width:590px){
+  body:has(.wrap.agent-open){--agent-dock:clamp(200px,var(--agent-width,30vw),54vw)}
+  body:has(.wrap.agent-open) > :is(header,main){margin-left:var(--agent-dock)}
+  .result-mode.agent-open{grid-template-columns:minmax(0,1fr)}
+  .result-mode.agent-open .result-bar,.result-mode.agent-open .flow{grid-area:auto}
+  .wrap.agent-open .agent-side{
+    position:fixed;z-index:7;inset:0 auto 0 0;width:var(--agent-dock);
+    min-height:0;padding:17px 19px 17px 16px;border:0;border-right:1px solid #8eaad2;border-radius:0;
+    box-shadow:8px 0 24px #28487a32;
+  }
+  .wrap.agent-open .agent-side-example{overflow:auto}
+  .wrap.agent-open .composer{flex-shrink:0}
+  .wrap.agent-open .agent-divider{
+    display:block;position:absolute;inset:0 -5px 0 auto;width:11px;cursor:ew-resize;touch-action:none;
+  }
+  .agent-divider::before{content:"";position:absolute;top:50%;left:50%;width:3px;height:30px;transform:translate(-50%,-50%);border-radius:3px;background:#698abb}
+  .agent-divider:hover::before,.agent-divider:focus-visible::before{background:#254878}
+  body.is-resizing-agent{user-select:none;cursor:ew-resize}
+}
+.result-mode .dashboard-sections button{
+  transition:transform 180ms ease,background-color 180ms ease,border-color 180ms ease,box-shadow 180ms ease;
+}
+@media(hover:hover){
+  .result-mode .dashboard-sections button:hover{
+    transform:translateY(-1px);
+    background:var(--tab-fill);
+    border-color:var(--tab-border);
+    box-shadow:inset 0 1px 0 #fffe,0 4px 9px var(--tab-border);
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .result-mode .dashboard-sections button{transition:none}
+  .result-mode .dashboard-sections button:hover{transform:none}
+}
+body:has(.wrap:not(.result-mode)) main{padding-bottom:calc(82px + env(safe-area-inset-bottom))}
+@media(min-width:901px) and (max-width:1250px){
+  .wrap.agent-open:not(.result-mode) .flow{grid-template-columns:minmax(0,1fr);max-width:560px;margin:8px auto 0}
+  .wrap.agent-open:not(.result-mode) .flow .panel{transform:none}
+  .wrap.agent-open:not(.result-mode) .flow .link{width:1px;height:24px;margin:auto}
+}
+@media(max-width:589px){.wrap.agent-open:not(.result-mode) .agent-side{margin-top:16px}}
+.varodd-note{display:none}
+.result-mode[data-section="findings"] .varodd-note:not([hidden]){display:block;margin-top:14px;padding:10px 12px;border:1px solid #a9c3e8;border-radius:10px;background:#e8f0ff;color:#233866}
+.varodd-note h4{margin:0 0 4px;font-size:14px}
+.varodd-note p{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.wrap.agent-open:not(.result-mode) .flow{
+  grid-template-columns:minmax(0,1fr);
+  max-width:560px;
+  margin:4px auto 0;
+  padding-bottom:8px;
+}
+.wrap.agent-open:not(.result-mode) .flow .panel{transform:none}
+.wrap.agent-open:not(.result-mode) .flow .panel h2{padding:8px 10px;font-size:13px;gap:5px}
+.wrap.agent-open:not(.result-mode) .flow .panel h2::before{width:19px;height:19px}
+.wrap.agent-open:not(.result-mode) .flow .panel > .content{padding:9px 11px;font-size:13px}
+.wrap.agent-open:not(.result-mode) .flow .companies li{padding:5px 8px}
+.wrap.agent-open:not(.result-mode) .flow .agent-steps{row-gap:4px}
+.wrap.agent-open:not(.result-mode) .flow .agent-steps li{font-size:12px}
+.wrap.agent-open:not(.result-mode) .flow .simulation{margin-top:6px}
+.wrap.agent-open:not(.result-mode) .flow .link{width:1px;height:14px;margin:auto}
+.wrap.agent-open:not(.result-mode) .mapping-ready button{margin-top:6px;padding-block:5px}
+@media(min-width:590px){
+  body:has(.wrap.agent-open:not(.result-mode)) header{padding-block:10px}
+  body:has(.wrap.agent-open:not(.result-mode)) main{padding:5px clamp(12px,2vw,28px) calc(58px + env(safe-area-inset-bottom))}
+}
+.pdf-download:disabled{cursor:default;opacity:.68}
+.result-mode{gap:clamp(16px,2.2vw,28px)}
+.result-mode .result-bar{padding:clamp(14px,1.9vw,21px);gap:16px}
+.result-mode .result-actions{gap:8px}
+.result-mode .flow .output > .content{padding:clamp(18px,2.5vw,30px)}
+.result-mode .dashboard-sections{margin-bottom:clamp(16px,2vw,23px)}
+.result-mode .finding-details{margin-top:clamp(16px,2vw,22px)}
+.result-mode .finding-details dl{gap:clamp(10px,1.4vw,17px)}
+.result-mode .finding-details dl div{padding:clamp(10px,1.3vw,16px)}
+.result-mode .candidate-matches li{padding:10px 13px}
+@media(max-height:520px){
+  .result-mode{gap:14px}
+  .result-mode .result-bar,.result-mode .flow .output > .content{padding:14px}
+  .result-mode .dashboard-sections,.result-mode .finding-details{margin-block-end:10px}
+  .result-mode .finding-details{margin-top:12px}
+}
+@media(min-width:1000px){
+  .result-mode:not(.agent-open){max-width:1160px;grid-template-columns:220px minmax(0,1fr)}
+}
+@media(min-width:1000px) and (min-height:560px){
+  .result-mode:not(.agent-open) .flow .output > .content{padding:30px 32px}
+  .result-mode:not(.agent-open) .finding-details dl div{padding:16px 18px}
+}
+@media(min-width:620px){
+  body:has(.result-mode:not(.agent-open)) main{
+    box-sizing:border-box;
+    min-height:calc(100svh - 72px);
+    padding-block:16px calc(64px + env(safe-area-inset-bottom));
+    display:grid;
+    align-content:center;
+  }
+  .result-mode:not(.agent-open){width:100%}
+  .result-mode:not(.agent-open) .flow .output > .content{min-height:clamp(284px,56svh,360px)}
+}
 </style>
 <header><a class="home-link" href="index.html" aria-label="Varodd Inkludering – gå til forsiden"><strong>Varodd</strong><span>Inkludering</span></a></header>
 <main><div class="brand-backdrop" aria-hidden="true">Varodd</div><div class="wrap">
@@ -361,6 +550,11 @@ body:has(.result-mode) .brand-backdrop{display:none}
   </div></section>
   <div class="link" aria-hidden="true"><svg viewBox="0 0 72 72" preserveAspectRatio="none"><path d="M0 36 C37 36 35 -12 72 -12"/><circle cx="0" cy="36" r="2.5"/><circle cx="72" cy="-12" r="2.5"/></svg></div>
 <section class="panel output"><h2>Kompetanseoversikt <span class="agent-status">Resultat</span></h2><div class="content">
+  <div class="dashboard-sections" role="group" aria-label="Velg del av resultatet">
+    <button type="button" data-view="findings" aria-pressed="true">Funn</button>
+    <button type="button" data-view="candidates" aria-pressed="false">Kandidater</button>
+    <button type="button" data-view="contact" aria-pressed="false">Kontakt</button>
+  </div>
   <div class="mapping-ready" hidden>
     <p role="status"></p>
     <button type="button" class="show-result" hidden>Vis resultat</button>
@@ -372,7 +566,7 @@ body:has(.result-mode) .brand-backdrop{display:none}
 <div><dt>Lagerregistrering</dt><dd>Registrere varer inn og ut i et lagersystem.</dd></div>
 </dl>
 <p class="practice-question"><strong>Forslag til sp&oslash;rsm&aring;l om arbeidspraksis</strong>Kan plukk og pakking v&aelig;re aktuelt som arbeidspraksis, og kan dere gi oppl&aelig;ring i oppgavene?</p>
-</div><section class="contact"><h4>Kontaktinfo <small>Eksempeldata</small></h4><dl><div><dt>E-post</dt><dd>sorvik@example.com</dd></div><div><dt>Telefon</dt><dd>00 00 00 00</dd></div></dl></section></article>
+</div><section class="candidate-matches" aria-labelledby="candidates-sorvik"><h4 id="candidates-sorvik">Mulige kandidater</h4><p>Fiktive profiler. Varodd vurderer om kandidaten og oppgavene passer sammen.</p><ul><li><strong>Kandidat A</strong><span><b>Plukk og pakk</b></span><span>Har erfaring med ordreplukk og pakking.</span></li><li><strong>Kandidat B</strong><span><b>Varemottak og lagerregistrering</b></span><span>Har tatt imot leveranser og registrert varer i et lagersystem.</span></li></ul></section><section class="contact"><h4>Kontaktinfo <small>Eksempeldata</small></h4><dl><div><dt>E-post</dt><dd>sorvik@example.com</dd></div><div><dt>Telefon</dt><dd>00 00 00 00</dd></div></dl></section></article>
   <article id="fjordglimt"><h3>Fjordglimt Analyse</h3><ul class="skills"><li>Excel</li><li>Datavask</li><li>Rapportering</li></ul><div class="finding-details">
 <dl>
 <div><dt>Excel</dt><dd>Sortere data og lage enkle oversikter i regneark.</dd></div>
@@ -380,7 +574,7 @@ body:has(.result-mode) .brand-backdrop{display:none}
 <div><dt>Rapportering</dt><dd>Oppsummere tall i tabeller og enkle diagrammer.</dd></div>
 </dl>
 <p class="practice-question"><strong>Forslag til sp&oslash;rsm&aring;l om arbeidspraksis</strong>Har dere et avgrenset datasett en praksisdeltaker kan &oslash;ve p&aring; &aring; rydde med veiledning?</p>
-</div><section class="contact"><h4>Kontaktinfo <small>Eksempeldata</small></h4><dl><div><dt>E-post</dt><dd>fjordglimt@example.com</dd></div><div><dt>Telefon</dt><dd>00 00 00 00</dd></div></dl></section></article>
+</div><section class="candidate-matches" aria-labelledby="candidates-fjordglimt"><h4 id="candidates-fjordglimt">Mulige kandidater</h4><p>Fiktive profiler. Varodd vurderer om kandidaten og oppgavene passer sammen.</p><ul><li><strong>Kandidat C</strong><span><b>Excel og datavask</b></span><span>Har brukt Excel til å sortere data og finne duplikater.</span></li><li><strong>Kandidat D</strong><span><b>Rapportering</b></span><span>Har laget tabeller og diagrammer fra regneark.</span></li></ul></section><section class="contact"><h4>Kontaktinfo <small>Eksempeldata</small></h4><dl><div><dt>E-post</dt><dd>fjordglimt@example.com</dd></div><div><dt>Telefon</dt><dd>00 00 00 00</dd></div></dl></section></article>
   <article id="ny-bedrift"><h3>Eksempelresultat for ny bedrift</h3><ul class="skills"><li>Kundeservice</li><li>Ordrebehandling</li><li>Varepåfylling</li></ul><div class="finding-details">
 <dl>
 <div><dt>Kundeservice</dt><dd>Svare p&aring; vanlige sp&oslash;rsm&aring;l fra kunder.</dd></div>
@@ -388,81 +582,25 @@ body:has(.result-mode) .brand-backdrop{display:none}
 <div><dt>Varep&aring;fylling</dt><dd>Fylle p&aring; varer og holde orden i hyllene.</dd></div>
 </dl>
 <p class="practice-question"><strong>Forslag til sp&oslash;rsm&aring;l om arbeidspraksis</strong>Kan en praksisdeltaker begynne med varep&aring;fylling og f&aring; oppl&aelig;ring p&aring; stedet?</p>
-</div><section class="contact"><h4>Kontaktinfo <small>Eksempeldata</small></h4><dl><div><dt>E-post</dt><dd>ny-bedrift@example.com</dd></div><div><dt>Telefon</dt><dd>00 00 00 00</dd></div></dl></section></article>
-  <button class="pdf-download" type="button">
+</div><section class="varodd-note" hidden><h4>Informasjon fra Varodd</h4><p></p></section><section class="candidate-matches" aria-labelledby="candidates-ny-bedrift"><h4 id="candidates-ny-bedrift">Mulige kandidater</h4><p>Fiktive profiler. Varodd vurderer om kandidaten og oppgavene passer sammen.</p><ul><li><strong>Kandidat E</strong><span><b>Kundeservice og ordrebehandling</b></span><span>Har svart på kundespørsmål og registrert bestillinger.</span></li><li><strong>Kandidat F</strong><span><b>Varepåfylling</b></span><span>Har fylt på varer og holdt orden i hyllene.</span></li></ul></section><section class="contact"><h4>Kontaktinfo <small>Eksempeldata</small></h4><dl><div><dt>E-post</dt><dd>ny-bedrift@example.com</dd></div><div><dt>Telefon</dt><dd>00 00 00 00</dd></div></dl></section></article>
+  <button class="pdf-download" type="button" disabled aria-label="Last ned PDF (ikke tilgjengelig i prototypen)">
     <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2v10m-4-4 4 4 4-4M3 13v4h14v-4"/></svg>
     Last ned PDF
   </button>
   </div></section>
 </div>
-<div class="composer"><div class="composer-row">
+<button class="agent-toggle" type="button" aria-controls="agent-side" aria-expanded="false">Skriv til KI-agenten</button>
+<div class="agent-side" id="agent-side">
+  <div class="agent-divider" role="separator" aria-label="Bredde p&aring; agentpanelet" aria-orientation="vertical" aria-controls="agent-side" aria-valuemin="200" aria-valuemax="400" aria-valuenow="250" tabindex="0"></div>
+  <div class="agent-side-head"><h2>KI-agenten</h2><button class="agent-close" type="button" aria-label="Lukk agentpanelet">&times;</button></div>
+  <p class="agent-side-example"><strong>Eksempel fra KI-agenten</strong>Du kan sp&oslash;rre om funnene eller hvilke oppgaver som kan v&aelig;re aktuelle for arbeidspraksis.</p>
+<div class="composer" id="agent-composer"><div class="composer-row">
   <input id="workflow-message" type="text" placeholder="Skriv til KI-agenten &#8230;" aria-label="Skriv til KI-agenten">
   <button type="button" disabled aria-label="Send melding">&#8593;</button>
 </div></div>
+</div>
 </div></main>
 <script>
-function pdfText(value) {
-  return Array.from(value, char => {
-    const code = char.charCodeAt(0);
-    if (code >= 32 && code <= 126) return '()\\'.includes(char) ? '\\' + char : char;
-    return code >= 160 && code <= 255 ? '\\' + code.toString(8) : '?';
-  }).join('');
-}
-
-function buildOverviewPdf(companies) {
-  let y = 780;
-  const lines = [];
-  function addLine(text, size, font, spacing) {
-    lines.push(`BT /${font} ${size} Tf 1 0 0 1 52 ${y} Tm (${pdfText(text)}) Tj ET\n`);
-    y -= spacing;
-  }
-  addLine('Varodd Inkludering', 12, 'F1', 28);
-  addLine('Kompetanseoversikt', 24, 'F2', 22);
-  addLine('Eksempeldata - fiktive bedrifter', 11, 'F1', 32);
-  for (const company of companies) {
-    addLine(company.name, 16, 'F2', 23);
-    for (const skill of company.skills) addLine('- ' + skill, 12, 'F1', 19);
-    y -= 14;
-  }
-  const stream = lines.join('');
-  const objects = [
-    '<< /Type /Catalog /Pages 2 0 R >>',
-    '<< /Type /Pages /Kids [3 0 R] /Count 1 >>',
-    '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>',
-    '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>',
-    '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>',
-    `<< /Length ${stream.length} >>\nstream\n${stream}endstream`
-  ];
-  let pdf = '%PDF-1.4\n';
-  const offsets = objects.map((object, index) => {
-    const offset = pdf.length;
-    pdf += `${index + 1} 0 obj\n${object}\nendobj\n`;
-    return offset;
-  });
-  const xref = pdf.length;
-  pdf += `xref\n0 ${objects.length + 1}\n0000000000 65535 f \n`;
-  for (const offset of offsets) pdf += `${String(offset).padStart(10, '0')} 00000 n \n`;
-  return pdf + `trailer\n<< /Size ${objects.length + 1} /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF\n`;
-}
-
-document.querySelector('.pdf-download').addEventListener('click', () => {
-  const companies = [...document.querySelectorAll('.output article')]
-    .filter(card => card.getClientRects().length > 0)
-    .map(card => ({
-      name: card.querySelector('h3').textContent.trim(),
-      skills: [...card.querySelectorAll('.skills li')].map(skill => skill.textContent.trim())
-    }));
-  if (!companies.length) return;
-  const url = URL.createObjectURL(new Blob([buildOverviewPdf(companies)], {type:'application/pdf'}));
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = 'varodd-kompetanseoversikt.pdf';
-  document.body.append(link);
-  link.click();
-  link.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-});
-
 const flow = document.querySelector('.flow');
 
 
@@ -485,8 +623,73 @@ const connections = panels.slice(1).map(() =>
 );
 flow.append(wires);
 flow.classList.add('drag-ready');
-const stacked = matchMedia('(max-width:900px)');
 const dashboard = document.querySelector('.wrap');
+const agentToggle = dashboard.querySelector('.agent-toggle');
+const agentInput = document.getElementById('workflow-message');
+const agentSide = document.getElementById('agent-side');
+const agentDivider = agentSide.querySelector('.agent-divider');
+const dockViewport = matchMedia('(min-width:590px)');
+function syncAgentWidth() {
+  if (!dockViewport.matches || !dashboard.classList.contains('agent-open')) return;
+  agentDivider.setAttribute('aria-valuemax', String(Math.floor(document.documentElement.clientWidth * .54)));
+  agentDivider.setAttribute('aria-valuenow', String(Math.round(agentSide.getBoundingClientRect().width)));
+}
+function resizeAgent(width) {
+  const max = Math.floor(document.documentElement.clientWidth * .54);
+  document.body.style.setProperty('--agent-width', Math.min(max,Math.max(200,width)) + 'px');
+  syncAgentWidth();
+}
+let agentDrag = null;
+agentDivider.addEventListener('pointerdown', event => {
+  if (!event.isPrimary || event.button !== 0) return;
+  agentDrag = {id:event.pointerId,x:event.clientX,width:agentSide.getBoundingClientRect().width};
+  agentDivider.setPointerCapture(event.pointerId);
+  document.body.classList.add('is-resizing-agent');
+  event.preventDefault();
+});
+agentDivider.addEventListener('pointermove', event => {
+  if (agentDrag?.id === event.pointerId) resizeAgent(agentDrag.width + event.clientX - agentDrag.x);
+});
+agentDivider.addEventListener('lostpointercapture', () => {
+  agentDrag = null;
+  document.body.classList.remove('is-resizing-agent');
+});
+agentDivider.addEventListener('keydown', event => {
+  if (!['ArrowLeft','ArrowRight','Home','End'].includes(event.key)) return;
+  const width = agentSide.getBoundingClientRect().width;
+  const target = {ArrowLeft:width-20,ArrowRight:width+20,Home:200,End:innerWidth}[event.key];
+  resizeAgent(target);
+  event.preventDefault();
+});
+window.addEventListener('resize', syncAgentWidth);
+dashboard.querySelector('.agent-close').addEventListener('click', () => {
+  setAgentOpen(false);
+  agentToggle.focus({preventScroll:true});
+});
+function setAgentOpen(open) {
+  dashboard.classList.toggle('agent-open', open);
+  agentToggle.setAttribute('aria-expanded', String(open));
+  agentToggle.textContent = open ? 'Skjul skrivefelt' : 'Skriv til KI-agenten';
+  if (open) syncAgentWidth();
+}
+agentToggle.addEventListener('click', () => {
+  const open = !dashboard.classList.contains('agent-open');
+  setAgentOpen(open);
+  if (open) agentInput.focus();
+});
+agentInput.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && dashboard.classList.contains('agent-open')) {
+    setAgentOpen(false);
+    agentToggle.focus({preventScroll:true});
+  }
+});
+const dashboardSections = [...flow.querySelectorAll('.dashboard-sections button')];
+function selectDashboardSection(section) {
+  dashboard.dataset.section = section;
+  dashboardSections.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.view === section)));
+}
+dashboardSections.forEach(button => button.addEventListener('click', () => selectDashboardSection(button.dataset.view)));
+selectDashboardSection('findings');
 const resultBar = document.querySelector('.result-bar');
 const showFlow = document.querySelector('.show-flow');
 const pdfButton = document.querySelector('.pdf-download');
@@ -505,6 +708,7 @@ function setDashboard(show, animate) {
   function applyLayout() {
     dashboard.classList.toggle('result-mode', show);
     if (show) {
+      selectDashboardSection('findings');
       dashboard.classList.remove('mapping-preview');
       readiness.hidden = true;
       resultStatus.textContent = 'Resultat';
@@ -562,6 +766,13 @@ function simulateMapping() {
 }
 
 function openCompany() {
+  const notePanel = document.querySelector('.varodd-note');
+  let note = '';
+  if (location.hash === '#ny-bedrift') {
+    try { note = sessionStorage.getItem('varodd-new-company-note') || ''; } catch {}
+  }
+  notePanel.hidden = !note;
+  notePanel.querySelector('p').textContent = note;
   mappingTimers.forEach(clearTimeout);
   mappingTimers = [];
   dashboard.classList.remove('mapping-preview');
@@ -586,7 +797,7 @@ function drawWires() {
   connections.forEach(([path, signal, start, end], index) => {
     const a = panels[index].getBoundingClientRect();
     const b = panels[index + 1].getBoundingClientRect();
-    const vertical = stacked.matches;
+    const vertical = getComputedStyle(flow).gridTemplateColumns.trim().split(/\s+/).length === 1;
     const x1 = (vertical ? a.left + a.width / 2 : a.right) - origin.left;
     const y1 = (vertical ? a.bottom : a.top + a.height / 2) - origin.top;
     const x2 = (vertical ? b.left + b.width / 2 : b.left) - origin.left;
@@ -710,6 +921,10 @@ drawWires();
 openCompany();
 </script>
 </html>
+
+
+
+
 
 
 
