@@ -36,7 +36,7 @@ main{background-color:#f6f1fc;background-image:radial-gradient(ellipse at 82% 18
 .list{background:#ffffff85;border-color:#fff;backdrop-filter:blur(20px);box-shadow:0 12px 36px #4a2d7824,inset 0 1px 0 #fff}
 article+article{border-color:#77609230}
 a{background:#f4c4ee;border:1px solid #fff9}
-.add{position:relative;margin-top:18px}
+.add{position:relative;display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:18px}
 .add summary,.add button{display:inline-block;background:#f4c4ee;color:#28153d;border:1px solid #fff9;border-radius:9px;padding:9px 13px;font:inherit;font-weight:650;cursor:pointer}
 .add summary{list-style:none}
 .add summary::-webkit-details-marker{display:none}
@@ -134,15 +134,15 @@ main{padding-block:clamp(20px,4vh,42px)}
 .add > summary:focus-visible{outline:2px solid #1a365e;outline-offset:3px}
 .add > summary::before{content:"+";font-size:19px;line-height:1}
 .add[open] > summary::before{content:"\2212"}
-.add > .open-company{
+.add > .open-company,.add > .open-candidate{
   --open-company-glass:linear-gradient(145deg,#f8fcfff2,#d3e5ffbf);
   min-height:44px;padding:9px 16px;border:1px solid #7999c4;border-radius:10px;
   background:var(--open-company-glass);color:#172e58;
   box-shadow:inset 0 1px 0 #fff,0 5px 12px #244a8045;
   transition:border-color 180ms ease,box-shadow 180ms ease;
 }
-.add > .open-company:hover{background:var(--open-company-glass);color:#172e58;border-color:#5079ae;box-shadow:inset 0 1px 0 #fff,0 6px 15px #244a8060}
-.add > .open-company:focus-visible{outline:2px solid #254878;outline-offset:3px}
+.add > .open-company:hover,.add > .open-candidate:hover{background:var(--open-company-glass);color:#172e58;border-color:#5079ae;box-shadow:inset 0 1px 0 #fff,0 6px 15px #244a8060}
+.add > .open-company:focus-visible,.add > .open-candidate:focus-visible{outline:2px solid #254878;outline-offset:3px}
 .company-dialog{
   width:min(500px,calc(100% - 28px));max-height:calc(100dvh - 28px);padding:19px;
   border:1px solid #d7e5fa;border-radius:17px;background:linear-gradient(145deg,#fbfdff,#e2edfc);
@@ -152,8 +152,39 @@ main{padding-block:clamp(20px,4vh,42px)}
 .company-dialog::backdrop{background:#172e5860;backdrop-filter:blur(3px)}
 .company-dialog-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}
 .company-dialog-head h2{margin:0;font-size:20px}
-.add .company-dialog .close-company{width:34px;height:34px;padding:0;background:#eef4ff;color:#233866;border:1px solid #b6c8e5;box-shadow:none}
+.add .company-dialog .close-company,.add .company-dialog .close-candidate{width:34px;height:34px;padding:0;background:#eef4ff;color:#233866;border:1px solid #b6c8e5;box-shadow:none}
 .add .company-dialog form{margin:0;padding:0;border:0;background:transparent;box-shadow:none;backdrop-filter:none;animation:none}
+.candidate-dialog{width:min(680px,calc(100% - 28px))}
+.candidate-dialog .fictional-data-note{margin:0 0 14px;padding:10px 12px;border:1px solid #b8c9e5;border-radius:9px;background:#eef4ff;color:#304974;font-size:13px}
+.candidate-dialog .fictional-data-note strong{color:#233866}
+.candidate-dialog fieldset{min-width:0;margin:14px 0 0;padding:0;border:0}
+.candidate-dialog legend{padding:0;font-weight:650}
+.candidate-dialog .field-help{margin:2px 0 8px;font-size:13px}
+.competence-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:7px}
+.add .competence-options label{display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid #b6c8e5;border-radius:8px;background:#f7faff;font-weight:500;cursor:pointer}
+.add .competence-options input{flex:none;width:17px;height:17px;min-width:17px;margin:0;padding:0;accent-color:#315b99}
+.candidate-dialog textarea{min-height:70px}
+.candidate-dialog select{display:block;width:100%;margin-top:6px;padding:9px 11px;border:1px solid #a7b8d7;border-radius:8px;background:#fff;color:#233866;font:inherit}
+.candidate-dialog .candidate-field{margin-top:13px}
+.candidate-dialog .submit-candidate{display:block;margin:15px 0 0 auto}
+.candidate-overview{margin-top:30px}
+.candidate-overview-head{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:8px 16px;margin-bottom:9px}
+.candidate-overview-head h2{font-size:22px}
+.candidate-overview .example{margin:3px 0 0}
+.candidate-count{color:#40577e;font-size:13px;font-weight:650}
+.candidate-save-status{min-height:1.4em;margin:0 0 7px;color:#205942;font-size:13px;font-weight:650}
+.candidate-list{padding:0 clamp(14px,3vw,24px)}
+.candidate-card{display:grid;grid-template-columns:minmax(180px,.8fr) minmax(280px,1.2fr);align-items:start;gap:20px;padding-block:19px}
+.candidate-card h3{margin:0;font-size:18px}
+.candidate-card .candidate-experience{margin-top:3px;font-size:14px}
+.competence-tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:10px 0 0;padding:0}
+.competence-tags li{padding:3px 8px;border:1px solid #b6c8e5;border-radius:999px;background:#e8f0ff;color:#233866;font-size:12px;font-weight:650}
+.candidate-details{display:grid;gap:9px;margin:0}
+.candidate-details div{padding-left:11px;border-left:2px solid #b6c8e5}
+.candidate-details dt{color:#40577e;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.candidate-details dd{margin:2px 0 0;color:#233866}
+.candidate-card:focus-visible{outline:2px solid #315b99;outline-offset:4px;border-radius:6px}
+@media(max-width:620px){.candidate-card{grid-template-columns:1fr;gap:14px}.competence-options{grid-template-columns:1fr}}
 @keyframes company-dialog-in{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){.company-dialog[open]{animation:none}}
 </style>
@@ -162,6 +193,7 @@ main{padding-block:clamp(20px,4vh,42px)}
 <h1>Bedriftsoversikt</h1>
 <div class="add">
 <button class="open-company" type="button" aria-haspopup="dialog" aria-controls="company-dialog">+ Legg til bedrift</button>
+<button class="open-candidate" type="button" aria-haspopup="dialog" aria-controls="candidate-dialog">+ Legg til kandidat</button>
 <dialog id="company-dialog" class="company-dialog" aria-labelledby="company-dialog-title">
 <div class="company-dialog-head"><h2 id="company-dialog-title">Legg til bedrift</h2><button type="button" class="close-company" aria-label="Lukk">&times;</button></div>
 <form action="varodd-arbeidsflyt.html#ny-bedrift">
@@ -174,6 +206,44 @@ main{padding-block:clamp(20px,4vh,42px)}
 <button class="submit-company" type="submit">Legg til og kartlegg</button>
 </form>
 </dialog>
+<dialog id="candidate-dialog" class="company-dialog candidate-dialog" aria-labelledby="candidate-dialog-title">
+<div class="company-dialog-head"><h2 id="candidate-dialog-title">Legg til kandidat</h2><button type="button" class="close-candidate" aria-label="Lukk">&times;</button></div>
+<form id="candidate-form">
+<p class="fictional-data-note"><strong>Kun fiktive data.</strong> Ikke registrer navn, ID-er eller andre opplysninger fra virkelige kandidater i denne prototypen.</p>
+<label for="candidate-id">Kandidatnavn eller kandidat-ID</label>
+<div class="fields">
+<input id="candidate-id" name="candidate-id" type="text" maxlength="80" placeholder="F.eks. Kandidat G" autocomplete="off" required>
+</div>
+<fieldset>
+<legend>Kompetanse og ferdigheter</legend>
+<p class="field-help" id="competence-help">Velg minst én kategori fra bedriftenes kompetansekartlegging.</p>
+<div class="competence-options" aria-describedby="competence-help">
+<label><input type="checkbox" name="competence" value="Varemottak">Varemottak</label>
+<label><input type="checkbox" name="competence" value="Plukk og pakk">Plukk og pakk</label>
+<label><input type="checkbox" name="competence" value="Lagerregistrering">Lagerregistrering</label>
+<label><input type="checkbox" name="competence" value="Excel">Excel</label>
+<label><input type="checkbox" name="competence" value="Datavask">Datavask</label>
+<label><input type="checkbox" name="competence" value="Rapportering">Rapportering</label>
+<label><input type="checkbox" name="competence" value="Kundeservice">Kundeservice</label>
+<label><input type="checkbox" name="competence" value="Ordrebehandling">Ordrebehandling</label>
+<label><input type="checkbox" name="competence" value="Varepåfylling">Varepåfylling</label>
+</div>
+</fieldset>
+<label class="candidate-field" for="candidate-experience">Arbeidserfaring</label>
+<textarea id="candidate-experience" name="experience" maxlength="600" placeholder="Beskriv fiktiv, relevant erfaring" required></textarea>
+<label class="candidate-field" for="candidate-tasks">Ønskede arbeidsoppgaver</label>
+<textarea id="candidate-tasks" name="tasks" maxlength="600" placeholder="F.eks. pakking, varepåfylling eller enkle Excel-oppgaver" required></textarea>
+<label class="candidate-field" for="candidate-availability">Tilgjengelighet</label>
+<select id="candidate-availability" name="availability" required>
+<option value="">Velg tilgjengelighet</option>
+<option>Heltid</option>
+<option>Deltid</option>
+<option>Enkelte dager</option>
+<option>Etter avtale</option>
+</select>
+<button class="submit-candidate" type="submit">Registrer kandidat</button>
+</form>
+</dialog>
 </div>
 <div class="company-overview">
 <p class="example">Eksempeldata · fiktive bedrifter</p>
@@ -182,6 +252,20 @@ main{padding-block:clamp(20px,4vh,42px)}
 <article><div><h2>Fjordglimt Analyse</h2><p>Data og analyse</p></div><div class="company-actions"><span class="company-status is-unmapped">Ikke kartlagt</span><a href="varodd-arbeidsflyt.html#fjordglimt" aria-label="Kartlegg kompetanse hos Fjordglimt Analyse">Kartlegg kompetanse</a></div></article>
 </div>
 </div>
+<section class="candidate-overview" aria-labelledby="candidate-overview-title">
+<div class="candidate-overview-head"><div><h2 id="candidate-overview-title">Registrerte kandidater</h2><p class="example">Eksempeldata &middot; fiktive kandidatprofiler</p></div><span class="candidate-count" aria-live="polite">2 kandidater</span></div>
+<p class="candidate-save-status" role="status" aria-live="polite"></p>
+<div class="list candidate-list" id="candidate-list">
+<article class="candidate-card">
+<div><h3>Kandidat A</h3><p class="candidate-experience">Erfaring fra fiktiv lagerpraksis.</p><ul class="competence-tags" aria-label="Kompetanse og ferdigheter"><li>Varemottak</li><li>Plukk og pakk</li></ul></div>
+<dl class="candidate-details"><div><dt>Ønskede arbeidsoppgaver</dt><dd>Pakking av bestillinger og mottak av varer.</dd></div><div><dt>Tilgjengelighet</dt><dd>Deltid</dd></div></dl>
+</article>
+<article class="candidate-card">
+<div><h3>Kandidat B</h3><p class="candidate-experience">Har øvd på regneark med fiktive datasett.</p><ul class="competence-tags" aria-label="Kompetanse og ferdigheter"><li>Excel</li><li>Datavask</li><li>Rapportering</li></ul></div>
+<dl class="candidate-details"><div><dt>Ønskede arbeidsoppgaver</dt><dd>Rydde data og lage enkle oversikter.</dd></div><div><dt>Tilgjengelighet</dt><dd>Enkelte dager</dd></div></dl>
+</article>
+</div>
+</section>
 </div></main>
 <script>
 const addCompanyForm = document.querySelector('.add form');
@@ -194,6 +278,99 @@ addCompanyForm.addEventListener('submit', () => {
     if (note) sessionStorage.setItem('varodd-new-company-note', note);
     else sessionStorage.removeItem('varodd-new-company-note');
   } catch {}
+});
+
+const candidateDialog = document.getElementById('candidate-dialog');
+const candidateForm = document.getElementById('candidate-form');
+const candidateList = document.getElementById('candidate-list');
+const candidateCount = document.querySelector('.candidate-count');
+const candidateSaveStatus = document.querySelector('.candidate-save-status');
+const competenceInputs = [...candidateForm.querySelectorAll('input[name="competence"]')];
+const candidateStorageKey = 'varodd-fictional-candidates';
+const allowedCompetencies = competenceInputs.map(input => input.value);
+const allowedAvailability = ['Heltid','Deltid','Enkelte dager','Etter avtale'];
+let savedCandidates = [];
+
+function createTextElement(tag, className, text) {
+  const element = document.createElement(tag);
+  if (className) element.className = className;
+  element.textContent = text;
+  return element;
+}
+
+function createCandidateCard(candidate, focus = false) {
+  const card = document.createElement('article');
+  card.className = 'candidate-card';
+  const summary = document.createElement('div');
+  summary.append(createTextElement('h3', '', candidate.id));
+  summary.append(createTextElement('p', 'candidate-experience', candidate.experience));
+  const tags = document.createElement('ul');
+  tags.className = 'competence-tags';
+  tags.setAttribute('aria-label', 'Kompetanse og ferdigheter');
+  candidate.competence.forEach(item => tags.append(createTextElement('li', '', item)));
+  summary.append(tags);
+
+  const details = document.createElement('dl');
+  details.className = 'candidate-details';
+  [['Ønskede arbeidsoppgaver',candidate.tasks],['Tilgjengelighet',candidate.availability]].forEach(([term,description]) => {
+    const group = document.createElement('div');
+    group.append(createTextElement('dt', '', term), createTextElement('dd', '', description));
+    details.append(group);
+  });
+  card.append(summary, details);
+  candidateList.prepend(card);
+  if (focus) {
+    card.tabIndex = -1;
+    card.focus();
+  }
+}
+
+function updateCandidateCount() {
+  const count = candidateList.querySelectorAll('.candidate-card').length;
+  candidateCount.textContent = `${count} ${count === 1 ? 'kandidat' : 'kandidater'}`;
+}
+
+function isStoredCandidate(candidate) {
+  return candidate && typeof candidate.id === 'string' && typeof candidate.experience === 'string' &&
+    typeof candidate.tasks === 'string' && allowedAvailability.includes(candidate.availability) &&
+    Array.isArray(candidate.competence) && candidate.competence.length > 0 &&
+    candidate.competence.every(item => allowedCompetencies.includes(item));
+}
+
+try {
+  const storedCandidates = JSON.parse(sessionStorage.getItem(candidateStorageKey) || '[]');
+  if (Array.isArray(storedCandidates)) savedCandidates = storedCandidates.filter(isStoredCandidate);
+} catch {}
+savedCandidates.forEach(candidate => createCandidateCard(candidate));
+updateCandidateCount();
+
+document.querySelector('.open-candidate').addEventListener('click', () => candidateDialog.showModal());
+document.querySelector('.close-candidate').addEventListener('click', () => candidateDialog.close());
+competenceInputs.forEach(input => input.addEventListener('change', () => competenceInputs[0].setCustomValidity('')));
+
+candidateForm.addEventListener('submit', event => {
+  event.preventDefault();
+  const selectedCompetencies = competenceInputs.filter(input => input.checked).map(input => input.value);
+  if (!selectedCompetencies.length) {
+    competenceInputs[0].setCustomValidity('Velg minst én kompetansekategori.');
+    competenceInputs[0].reportValidity();
+    return;
+  }
+  const formData = new FormData(candidateForm);
+  const candidate = {
+    id: formData.get('candidate-id').trim(),
+    competence: selectedCompetencies,
+    experience: formData.get('experience').trim(),
+    tasks: formData.get('tasks').trim(),
+    availability: formData.get('availability')
+  };
+  savedCandidates.push(candidate);
+  try { sessionStorage.setItem(candidateStorageKey, JSON.stringify(savedCandidates)); } catch {}
+  candidateForm.reset();
+  candidateDialog.close();
+  createCandidateCard(candidate, true);
+  updateCandidateCount();
+  candidateSaveStatus.textContent = `${candidate.id} er registrert i denne nettleserøkten.`;
 });
 </script>
 </html>
